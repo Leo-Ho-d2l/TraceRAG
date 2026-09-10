@@ -46,6 +46,20 @@ Benchmark:
     python -m eval.run_benchmark --phase final --judge
     raw results committed under artifacts/benchmark/ (json, csv, summary.md)
 
+Containerised stack (docker compose up --build):
+    postgres, redis, api, worker all started
+    api container ran `alembic upgrade head` then uvicorn
+    GET /health -> {"status":"ok"} ; /openapi.json -> 6 paths
+    docker compose exec api python scripts/seed_demo.py -> corpus de-duplicated
+    hybrid+rerank retrieval inside the container -> rrf=0.03279 (2/61), correct
+    /v1/chat inside the container -> real LLM answer, 2 valid citations
+    Celery worker ingested an uploaded document:
+        upload -> status=queued
+        ForkPoolWorker-2 -> "Task tracerag.ingest_document succeeded in 23.1s: 1"
+        document -> status=ready and retrievable as the top hit
+    probe document deleted; corpus restored to 7 documents / 31 chunks
+    image inspected: the API key is NOT present and /app/.env does not exist
+
 LIMITATIONS OF THIS VALIDATION
 ------------------------------
 - The benchmark corpus is small (7 documents / 31 chunks), so document-level

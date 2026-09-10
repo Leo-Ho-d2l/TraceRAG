@@ -346,10 +346,46 @@ retrieval rather than only its plumbing.
 
 ### Containerised stack
 
-`docker compose` configuration is validated (`docker compose config --quiet`
-exits 0 for all four services) and the full stack is built and run, including the
-Celery worker. The image is then checked for the API key, since the fix for
-defect 10 only matters if it can be shown to work.
+`docker compose config --quiet` exits 0 for all four services. The image was then
+built and the whole stack run, not just the infrastructure containers:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.verify.yml up --build -d
+docker compose ps          # postgres, redis, api, worker all up
+docker compose logs api    # alembic upgrade head, then uvicorn on 0.0.0.0:8000
+curl http://127.0.0.1:8000/health          # {"status":"ok"}
+curl http://127.0.0.1:8000/openapi.json    # 6 paths
+docker compose exec -T api python scripts/seed_demo.py
+```
+
+(`docker-compose.verify.yml` was a throwaway override pointing the containers at
+the `postgres`/`redis` hostnames; the committed `.env` keeps `localhost` for
+local development. It is deleted after verification.)
+
+Verified inside the containers:
+
+* Hybrid retrieval with reranking — every score field populated, and the top
+  chunk scored `rrf=0.03279` (`2/61`), i.e. RRF accumulation still correct.
+* `/v1/chat` with the real LLM from inside the container answered *"Audit logs are
+  retained for 90 days on Business and 365 days on Enterprise by default
+  [S1][S2]"* with 1391 ms latency and both citations resolving correctly.
+* **Celery worker** — with `INGESTION_MODE=celery` an upload returned
+  `status=queued`, `ForkPoolWorker-2` picked the task up, and the log recorded
+  `Task tracerag.ingest_document[...] succeeded in 23.1s: 1`; the document became
+  `ready` and was retrievable as the top hit. The worker downloaded the embedding
+  model into its own container on first use.
+* The probe document was deleted afterwards; the corpus is back to the 7
+  documents / 31 chunks that the committed benchmark ran against.
+
+Finally, the image was checked for the API key, because fix 10 only matters if it
+can be shown to work:
+
+```bash
+docker run --rm --entrypoint sh tracerag-api:latest -c "grep -rl '<key>' /app"
+# no output -- the key is not in the image
+docker run --rm --entrypoint sh tracerag-api:latest -c "ls /app/.env"
+# ls: cannot access '/app/.env': No such file or directory
+```
 
 ---
 
