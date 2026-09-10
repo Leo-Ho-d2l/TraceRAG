@@ -9,7 +9,19 @@
 
 [中文说明](README.zh-CN.md) · [Architecture](#architecture) · [Benchmark](#benchmark) · [Debug report](DEBUG_REPORT.md) · [Raw benchmark artifacts](artifacts/benchmark/)
 
-### Engineering snapshot
+> **Evaluated Agentic RAG for multi-document enterprise knowledge research.**  
+> `Async ingestion → Dense + PostgreSQL FTS → RRF → Cross-Encoder Rerank → Bounded LangGraph Research → Citation Validation`
+
+### 30-second overview
+
+| | |
+|---|---|
+| **Problem** | Single-shot retrieval can miss evidence for cross-document questions, while generated answers need traceable citations. |
+| **System** | Multi-format ingestion, hybrid retrieval, bounded research/tool use, evidence aggregation and citation validation. |
+| **Evidence** | 30-case retrieval/agent benchmark, committed raw artifacts, 63 automated tests and full Docker-stack verification. |
+| **Measured tuning** | Sparse Recall@5 **0.0167 → 0.9833** after fixing lexical query semantics; rerank p50 **417 ms → 329 ms (-21%)** after candidate-pool tuning. |
+
+### Verified engineering snapshot
 
 | Signal | Verified result |
 |---|---|
@@ -17,14 +29,7 @@
 | Retrieval quality | Hybrid + rerank **Recall@5 0.9833 / MRR 0.9833** |
 | Citation reliability | **100% citation validity** on the 30-case agent benchmark |
 | LLM evaluation | Judge correctness **0.978**, groundedness **0.988** |
-| Measured tuning | Rerank p50 **417 ms → 329 ms (-21%)** after candidate-pool tuning |
 | Full stack | Docker Compose + PostgreSQL/pgvector + Redis + Celery + real LLM verified |
-
-**An Agentic RAG service: hybrid retrieval (pgvector + PostgreSQL lexical + RRF + cross-encoder reranking), a bounded LangGraph research agent with validated tool calling, and source-grounded citations — evaluated on a self-maintained benchmark.**
-
-TraceRAG is a compact reference implementation for retrieval-heavy LLM applications.
-It keeps ingestion, retrieval, agent execution, citations, caching and evaluation
-explicit so each stage can be inspected and measured independently.
 
 ## Key technical highlights
 
