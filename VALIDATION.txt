@@ -1,4 +1,58 @@
-TraceRAG v0.1.0
+TraceRAG v0.1.0 — validation record
 Generated: 2026-09-10
-Core unit tests executed: 7 passed
-Full Docker integration not executed in this environment (Docker/network unavailable).
+
+WHAT WAS RUN
+------------
+Infrastructure (Docker Compose):
+    docker compose up -d postgres redis
+    docker compose ps                                  -> both healthy
+    docker compose exec -T redis redis-cli ping         -> PONG
+    docker compose exec -T postgres pg_isready -U tracerag -d tracerag
+    alembic upgrade head                                -> 0001 applied
+    verified: PostgreSQL 17.11, pgvector 0.8.6,
+              ix_chunks_embedding_hnsw (hnsw, vector_cosine_ops, m=16, ef_construction=64),
+              ix_chunks_search_vector (gin), ix_chunks_doc_ordinal (unique)
+
+Service:
+    python -m app.serve --host 127.0.0.1 --port 8000
+    GET  /health        -> {"status":"ok"}   (executes a real SELECT)
+    GET  /openapi.json  -> 6 documented paths
+    GET  /              -> demo UI
+
+Ingestion:
+    python scripts/seed_demo.py                         -> 7 documents, 31 chunks
+    PDF upload through the API                          -> ready, page_number preserved,
+                                                           retrievable, citable
+    duplicate upload (same SHA-256)                     -> de-duplicated
+    unsupported extension (.exe)                        -> HTTP 400
+    empty document                                      -> status=failed with error_message
+
+Retrieval (all four configurations, through POST /v1/search):
+    dense / sparse / hybrid / hybrid+rerank
+    verified: score semantics per stage, RRF accumulation across branches
+              (top chunk scored 2/61), rank direction, rerank reordering
+
+Agent (real LLM, OpenAI-compatible endpoint, temperature 0):
+    direct / retrieve / research routes; bounded tool loop; tool argument
+    validation; unknown-tool rejection; citation resolution to real chunks;
+    chat history persistence.
+
+Tests:
+    pytest          -> 63 passed
+    ruff check .    -> All checks passed
+
+Benchmark:
+    python -m eval.run_benchmark --phase baseline --judge
+    python -m eval.run_benchmark --phase final --judge
+    raw results committed under artifacts/benchmark/ (json, csv, summary.md)
+
+LIMITATIONS OF THIS VALIDATION
+------------------------------
+- The benchmark corpus is small (7 documents / 31 chunks), so document-level
+  Recall@5 is close to saturation. MRR is the more discriminative metric.
+- fact_coverage is a substring matcher and under-reports paraphrased answers;
+  the LLM judge scored those same answers as correct. Both numbers are reported.
+- Docker Compose was exercised for the infrastructure services and the full
+  stack; see DEBUG_REPORT.md for the exact commands and outcomes.
+- No performance claim is made beyond the measured numbers in
+  artifacts/benchmark/.
