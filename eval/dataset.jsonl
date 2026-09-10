@@ -1,0 +1,30 @@
+{"id":"q01","question":"How long are audit logs retained on Business?","gold_docs":["security.md","pricing.md"],"answer_facts":["90 days"],"type":"single_hop"}
+{"id":"q02","question":"What is the default Enterprise audit log retention period?","gold_docs":["security.md","pricing.md"],"answer_facts":["365 days"],"type":"single_hop"}
+{"id":"q03","question":"Which plans support SAML SSO?","gold_docs":["security.md","pricing.md"],"answer_facts":["Business","Enterprise"],"type":"single_hop"}
+{"id":"q04","question":"What is the Business monthly price and annual-commitment monthly price?","gold_docs":["pricing.md"],"answer_facts":["$49","$39"],"type":"single_hop"}
+{"id":"q05","question":"What happens when the API rate limit is exceeded?","gold_docs":["api_limits.md"],"answer_facts":["HTTP 429"],"type":"single_hop"}
+{"id":"q06","question":"How long is an idempotency key retained?","gold_docs":["api_limits.md"],"answer_facts":["24 hours"],"type":"single_hop"}
+{"id":"q07","question":"What timeout should interactive API clients use?","gold_docs":["api_limits.md"],"answer_facts":["5 seconds","30 seconds"],"type":"single_hop"}
+{"id":"q08","question":"Is private networking available on Business?","gold_docs":["deployment.md","pricing.md"],"answer_facts":["not available","Enterprise"],"type":"single_hop"}
+{"id":"q09","question":"How long does a dedicated deployment typically take to provision?","gold_docs":["deployment.md"],"answer_facts":["three weeks"],"type":"single_hop"}
+{"id":"q10","question":"What are the standard Enterprise RPO and RTO?","gold_docs":["disaster_recovery.md"],"answer_facts":["1 hour","4 hours"],"type":"single_hop"}
+{"id":"q11","question":"Compare Business and Enterprise disaster recovery objectives.","gold_docs":["disaster_recovery.md"],"answer_facts":["4 hours","8 hours","1 hour","4 hours"],"type":"comparison"}
+{"id":"q12","question":"Compare Business and Enterprise log retention for audit logs and application logs.","gold_docs":["security.md","observability.md"],"answer_facts":["90 days","365 days","14 days","30 days"],"type":"multi_document"}
+{"id":"q13","question":"Which plan supports OpenTelemetry trace export and what content is excluded by default?","gold_docs":["observability.md"],"answer_facts":["Enterprise","document content"],"type":"single_hop"}
+{"id":"q14","question":"Compare the Business and Enterprise availability targets.","gold_docs":["observability.md"],"answer_facts":["99.9","99.95"],"type":"comparison"}
+{"id":"q15","question":"What is the severity-one support response target for Enterprise?","gold_docs":["support.md","disaster_recovery.md"],"answer_facts":["one-hour"],"type":"single_hop"}
+{"id":"q16","question":"How far in advance is planned maintenance announced?","gold_docs":["support.md"],"answer_facts":["five business days"],"type":"single_hop"}
+{"id":"q17","question":"What data residency regions can Enterprise customers select?","gold_docs":["security.md"],"answer_facts":["United States","European Union","Singapore","Japan"],"type":"single_hop"}
+{"id":"q18","question":"Can an Enterprise customer get customer-managed encryption keys and private networking?","gold_docs":["security.md","pricing.md","deployment.md"],"answer_facts":["customer-managed","private networking"],"type":"multi_document"}
+{"id":"q19","question":"Compare Business and Enterprise operational visibility features.","gold_docs":["observability.md","security.md"],"answer_facts":["30 days","90 days","14 days","30 days","OpenTelemetry"],"type":"multi_document"}
+{"id":"q20","question":"What retry behavior is recommended for 429 and transient 5xx responses?","gold_docs":["api_limits.md"],"answer_facts":["exponential backoff","jitter","Retry-After","five retries"],"type":"single_hop"}
+{"id":"q21","question":"What happens if the same idempotency key is reused with a different body?","gold_docs":["api_limits.md"],"answer_facts":["HTTP 409"],"type":"single_hop"}
+{"id":"q22","question":"Compare the release schedule for public SaaS and dedicated deployments.","gold_docs":["deployment.md"],"answer_facts":["weekly","two-week delayed"],"type":"comparison"}
+{"id":"q23","question":"Which plans can require MFA for all workspace members?","gold_docs":["security.md"],"answer_facts":["Business","Enterprise"],"type":"single_hop"}
+{"id":"q24","question":"What alert integrations are available on Enterprise?","gold_docs":["observability.md"],"answer_facts":["email","webhook","pager"],"type":"single_hop"}
+{"id":"q25","question":"How do Business and Enterprise differ for severity-two support response targets?","gold_docs":["support.md"],"answer_facts":["one business day","four business hours"],"type":"comparison"}
+{"id":"q26","question":"Can dedicated deployments delay critical security patches?","gold_docs":["deployment.md"],"answer_facts":["may bypass","immediate remediation"],"type":"single_hop"}
+{"id":"q27","question":"What is the restore process before data is merged back into production?","gold_docs":["disaster_recovery.md"],"answer_facts":["new recovery workspace"],"type":"single_hop"}
+{"id":"q28","question":"What is the customer notification target after a confirmed material security incident?","gold_docs":["security.md"],"answer_facts":["24 hours"],"type":"single_hop"}
+{"id":"q29","question":"Which Enterprise observability and security data can be exported to external systems?","gold_docs":["security.md","observability.md"],"answer_facts":["audit","logs","trace"],"type":"multi_document"}
+{"id":"q30","question":"Compare the operational commitments that distinguish Enterprise from Business across support, availability, and audit retention.","gold_docs":["support.md","observability.md","security.md"],"answer_facts":["one-hour","99.95","365 days"],"type":"multi_document"}

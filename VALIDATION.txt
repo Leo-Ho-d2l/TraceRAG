@@ -1,0 +1,4 @@
+TraceRAG v0.1.0
+Generated: 2026-09-10
+Core unit tests executed: 7 passed
+Full Docker integration not executed in this environment (Docker/network unavailable).

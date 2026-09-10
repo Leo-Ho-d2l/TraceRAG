@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TraceRAG</title>
+  <style>
+    :root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #161616; background: #f7f7f5; }
+    body { margin: 0; }
+    main { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+    h1 { margin-bottom: 4px; } .muted { color: #666; }
+    .grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; margin-top: 24px; }
+    .card { background: white; border: 1px solid #ddd; border-radius: 12px; padding: 18px; box-shadow: 0 3px 14px rgba(0,0,0,.04); }
+    input, textarea, select, button { font: inherit; }
+    textarea { width: 100%; min-height: 110px; box-sizing: border-box; padding: 10px; border: 1px solid #bbb; border-radius: 8px; }
+    button { border: 0; border-radius: 8px; padding: 9px 14px; cursor: pointer; background: #222; color: white; }
+    button.secondary { background: #eee; color: #222; }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+    pre { white-space: pre-wrap; background: #f4f4f4; padding: 12px; border-radius: 8px; overflow-x: auto; }
+    .source { padding: 10px 0; border-top: 1px solid #eee; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>TraceRAG</h1>
+  <div class="muted">Agentic RAG demo: ingestion, hybrid retrieval, reranking, tool use and citations.</div>
+  <div class="grid">
+    <section class="card">
+      <h3>Knowledge base</h3>
+      <input id="file" type="file" accept=".pdf,.md,.markdown,.txt,.html,.htm" />
+      <div class="row"><button onclick="upload()">Upload</button><button class="secondary" onclick="refreshDocs()">Refresh</button></div>
+      <div id="uploadStatus" class="muted"></div>
+      <div id="docs"></div>
+    </section>
+    <section class="card">
+      <h3>Ask</h3>
+      <textarea id="question" placeholder="Compare Business and Enterprise audit-log retention and observability."></textarea>
+      <div class="row">
+        <select id="mode"><option value="auto">auto</option><option value="retrieve">retrieve</option><option value="research">research</option></select>
+        <button onclick="ask()">Run</button>
+      </div>
+      <h4>Answer</h4><pre id="answer">—</pre>
+      <h4>Sources</h4><div id="sources"></div>
+      <details><summary>Tool trace</summary><pre id="trace">—</pre></details>
+    </section>
+  </div>
+</main>
+<script>
+let threadId = null;
+const headers = () => ({"Content-Type":"application/json"});
+async function refreshDocs(){
+  const r=await fetch('/v1/documents'); const d=await r.json();
+  document.getElementById('docs').innerHTML=(d.items||[]).map(x=>`<div class="source"><b>${x.filename}</b><br><span class="muted">${x.status}</span></div>`).join('') || '<p class="muted">No documents.</p>';
+}
+async function upload(){
+  const file=document.getElementById('file').files[0]; if(!file) return;
+  const fd=new FormData(); fd.append('file',file); document.getElementById('uploadStatus').textContent='Uploading…';
+  const r=await fetch('/v1/documents',{method:'POST',body:fd}); const d=await r.json();
+  document.getElementById('uploadStatus').textContent=r.ok?`Queued: ${d.filename}`:JSON.stringify(d); await refreshDocs();
+}
+async function ask(){
+  const q=document.getElementById('question').value.trim(); if(!q) return;
+  document.getElementById('answer').textContent='Running…';
+  const payload={question:q,thread_id:threadId,mode:document.getElementById('mode').value,top_k:6};
+  const r=await fetch('/v1/chat',{method:'POST',headers:headers(),body:JSON.stringify(payload)}); const d=await r.json();
+  if(!r.ok){document.getElementById('answer').textContent=JSON.stringify(d,null,2);return;}
+  threadId=d.thread_id; document.getElementById('answer').textContent=d.answer;
+  document.getElementById('sources').innerHTML=(d.citations||[]).map(s=>`<div class="source"><b>[${s.label}] ${s.filename}</b><br><span class="muted">${s.section_title||''}${s.page_number?' · p.'+s.page_number:''}</span><br>${s.excerpt}</div>`).join('')||'<span class="muted">No citations.</span>';
+  document.getElementById('trace').textContent=JSON.stringify(d.tool_trace||[],null,2);
+}
+refreshDocs();
+</script>
+</body>
+</html>

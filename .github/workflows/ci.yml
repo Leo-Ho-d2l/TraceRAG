@@ -1,0 +1,50 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql+psycopg://tracerag:tracerag@localhost:5432/tracerag
+      REDIS_URL: redis://localhost:6379/0
+      STORAGE_DIR: /tmp/tracerag-storage
+      INGESTION_MODE: inline
+      EMBEDDING_BACKEND: hash
+      EMBEDDING_DIM: "384"
+      RERANK_BACKEND: none
+      LLM_BACKEND: mock
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: tracerag
+          POSTGRES_PASSWORD: tracerag
+          POSTGRES_DB: tracerag
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tracerag -d tracerag"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+      redis:
+        image: redis:7.4-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: alembic upgrade head
+      - run: ruff check .
+      - run: pytest

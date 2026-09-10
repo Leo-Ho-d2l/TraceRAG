@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tracerag"
+version = "0.1.0"
+description = "Production-oriented Agentic RAG reference project with hybrid retrieval, reranking, evaluation and tracing."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = {text = "MIT"}
+authors = [{name = "TraceRAG contributors"}]
+dependencies = [
+  "fastapi>=0.120,<1",
+  "uvicorn[standard]>=0.35,<1",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.8,<3",
+  "sqlalchemy>=2.0.40,<3",
+  "psycopg[binary]>=3.2,<4",
+  "pgvector>=0.4,<1",
+  "alembic>=1.15,<2",
+  "redis>=6,<8",
+  "celery>=5.5,<6",
+  "httpx>=0.28,<1",
+  "python-multipart>=0.0.20,<1",
+  "pymupdf>=1.25,<2",
+  "beautifulsoup4>=4.13,<5",
+  "fastembed>=0.7,<1",
+  "langgraph>=1.0,<2",
+  "orjson>=3.10,<4",
+  "tenacity>=9,<10",
+  "opentelemetry-api>=1.35,<2",
+  "opentelemetry-sdk>=1.35,<2",
+  "opentelemetry-exporter-otlp-proto-http>=1.35,<2",
+  "opentelemetry-instrumentation-fastapi>=0.56b0,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<10",
+  "pytest-asyncio>=0.25,<2",
+  "pytest-cov>=6,<8",
+  "ruff>=0.12,<1",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008", "E501", "I001"]
