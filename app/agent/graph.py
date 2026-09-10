@@ -88,7 +88,9 @@ class TraceRAGGraph:
             return {"step": step, "pending_tool_calls": []}
 
         with span("agent.research_step", step=step):
-            result = await self.llm.chat(messages, tools=TOOL_SCHEMAS, temperature=0.1)
+            result = await self.llm.chat(
+                messages, tools=TOOL_SCHEMAS, temperature=settings.llm_temperature
+            )
         raw_message = result.raw_message or {"role": "assistant", "content": result.content}
         messages.append(raw_message)
         pending = [
@@ -159,7 +161,7 @@ class TraceRAGGraph:
             },
         ]
         with span("agent.finalize", evidence_count=len(evidence)):
-            result = await self.llm.chat(messages, temperature=0.1)
+            result = await self.llm.chat(messages, temperature=settings.llm_temperature)
         return {"answer": result.content or ""}
 
     @staticmethod

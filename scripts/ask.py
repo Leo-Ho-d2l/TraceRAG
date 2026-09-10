@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import argparse
-import asyncio
 
 from app.db.session import SessionLocal
 from app.services.chat import ChatService
+
+from app.core.event_loop import run_async
 
 
 async def main() -> None:
@@ -27,4 +28,4 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    run_async(main())

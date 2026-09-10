@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 import hashlib
 import mimetypes
 import uuid
@@ -12,6 +11,8 @@ from app.core.config import settings
 from app.db.models import Document, DocumentStatus
 from app.db.session import SessionLocal
 from app.ingestion.service import IngestionService
+
+from app.core.event_loop import run_async
 
 CORPUS_DIR = Path("sample_data/acmecloud")
 
@@ -44,4 +45,4 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    run_async(main())

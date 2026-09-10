@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 
 from sqlalchemy import delete, select
@@ -69,7 +69,7 @@ class IngestionService:
                     ]
                 )
                 document.status = DocumentStatus.ready
-                document.completed_at = datetime.now(timezone.utc)
+                document.completed_at = datetime.now(UTC)
                 document.metadata_ = {
                     **(document.metadata_ or {}),
                     "sections": len(sections),

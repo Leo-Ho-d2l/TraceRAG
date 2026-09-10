@@ -5,7 +5,8 @@ import uuid
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
-from sqlalchemy import func, select
+from sqlalchemy import cast, func, select
+from sqlalchemy.dialects.postgresql import TSVECTOR
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
@@ -39,7 +40,7 @@ class RetrievalHit:
         return payload
 
     @classmethod
-    def from_cache(cls, payload: dict[str, Any]) -> "RetrievalHit":
+    def from_cache(cls, payload: dict[str, Any]) -> RetrievalHit:
         return cls(
             **{
                 **payload,
@@ -49,6 +50,30 @@ class RetrievalHit:
         )
 
 
+
+
+def _lexical_tsquery(query: str):
+    """Build a stopword-filtered OR tsquery for the lexical branch.
+
+    ``plainto_tsquery`` conjoins every token, so a natural-language question
+    only matches a chunk that contains *all* of its words. Because the stored
+    ``search_vector`` uses the ``simple`` configuration -- which removes no
+    stopwords -- questions such as "What is the Enterprise audit log retention
+    period?" required 'what', 'is' and 'the' to appear in the chunk as well and
+    matched 1 of 30 benchmark cases.
+
+    This builds a disjunction of the question's content words instead, so
+    ``ts_rank_cd`` can rank chunks matching more of them higher. Stopwords are
+    decided by PostgreSQL's own ``english`` configuration (an empty tsvector),
+    and lexemes are escaped with ``quote_literal`` so user text cannot alter the
+    tsquery syntax.
+    """
+    lexeme = func.unnest(func.to_tsvector("simple", query)).table_valued("lexeme")
+    or_body = (
+        select(func.string_agg(func.quote_literal(lexeme.c.lexeme), " | "))
+        .where(func.to_tsvector("english", lexeme.c.lexeme) != cast("", TSVECTOR))
+    ).scalar_subquery()
+    return func.to_tsquery("simple", or_body)
 
 
 class HybridRetriever:
@@ -65,6 +90,7 @@ class HybridRetriever:
         document_ids: list[uuid.UUID] | None = None,
         rerank: bool = True,
         strategy: str = "hybrid",
+        use_cache: bool = True,
     ) -> tuple[list[RetrievalHit], bool]:
         top_k = top_k or settings.default_top_k
         if strategy not in {"dense", "sparse", "hybrid"}:
@@ -77,9 +103,10 @@ class HybridRetriever:
             "dense_k": settings.dense_k,
             "sparse_k": settings.sparse_k,
         }
-        cached = await self.cache.get(query, cache_payload)
-        if cached is not None:
-            return [RetrievalHit.from_cache(item) for item in cached], True
+        if use_cache:
+            cached = await self.cache.get(query, cache_payload)
+            if cached is not None:
+                return [RetrievalHit.from_cache(item) for item in cached], True
 
         with span("retrieval.query", query_length=len(query), top_k=top_k, strategy=strategy):
             if strategy == "dense":
@@ -93,10 +120,14 @@ class HybridRetriever:
                     item.score = item.sparse_score or 0.0
             else:
                 query_embedding = await asyncio.to_thread(self.embedder.embed_query, query)
-                dense_hits, sparse_hits = await asyncio.gather(
-                    self._dense(query_embedding, document_ids),
-                    self._sparse(query, document_ids),
-                )
+                # Dense and sparse share one AsyncSession, and SQLAlchemy forbids
+                # concurrent operations on a session. Gathering them raised
+                # InvalidRequestError("This session is provisioning a new
+                # connection; concurrent operations are not permitted"), which
+                # broke every hybrid request. Run them in sequence; each is a
+                # single indexed query, so the cost is one extra round trip.
+                dense_hits = await self._dense(query_embedding, document_ids)
+                sparse_hits = await self._sparse(query, document_ids)
                 candidates = self._fuse(dense_hits, sparse_hits)
             candidates = candidates[: max(top_k, settings.rerank_candidates)]
             if rerank and candidates and settings.rerank_backend != "none":
@@ -108,7 +139,8 @@ class HybridRetriever:
                 candidates.sort(key=lambda item: item.score, reverse=True)
             results = candidates[:top_k]
 
-        await self.cache.set(query, cache_payload, [item.to_cache() for item in results])
+        if use_cache:
+            await self.cache.set(query, cache_payload, [item.to_cache() for item in results])
         return results, False
 
     async def _dense(
@@ -130,7 +162,7 @@ class HybridRetriever:
     async def _sparse(
         self, query: str, document_ids: list[uuid.UUID] | None
     ) -> list[RetrievalHit]:
-        tsquery = func.plainto_tsquery("simple", query)
+        tsquery = _lexical_tsquery(query)
         rank = func.ts_rank_cd(Chunk.search_vector, tsquery)
         stmt = (
             select(Chunk, Document.filename, rank.label("sparse_score"))

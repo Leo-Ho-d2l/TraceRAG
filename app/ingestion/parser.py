@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-import fitz
+import pymupdf
 from bs4 import BeautifulSoup
 
 
@@ -38,7 +38,7 @@ def parse_document(path: Path) -> list[ParsedSection]:
 
 def _parse_pdf(path: Path) -> list[ParsedSection]:
     sections: list[ParsedSection] = []
-    with fitz.open(path) as doc:
+    with pymupdf.open(path) as doc:
         for index, page in enumerate(doc):
             blocks = page.get_text("blocks")
             text = "\n\n".join(block[4].strip() for block in blocks if block[4].strip())

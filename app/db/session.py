@@ -5,6 +5,11 @@ from sqlalchemy import event
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.core.config import settings
+from app.core.event_loop import configure_event_loop_policy
+
+# Must run before any event loop is created: the async psycopg driver cannot use
+# the Windows ProactorEventLoop.
+configure_event_loop_policy()
 
 engine = create_async_engine(
     settings.database_url,

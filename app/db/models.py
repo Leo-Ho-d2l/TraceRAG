@@ -12,7 +12,7 @@ from app.core.config import settings
 from app.db.base import Base
 
 
-class DocumentStatus(str, enum.Enum):
+class DocumentStatus(enum.StrEnum):
     queued = "queued"
     processing = "processing"
     ready = "ready"
@@ -94,7 +94,7 @@ class ChatThread(Base):
     )
 
 
-class ChatRole(str, enum.Enum):
+class ChatRole(enum.StrEnum):
     user = "user"
     assistant = "assistant"
 

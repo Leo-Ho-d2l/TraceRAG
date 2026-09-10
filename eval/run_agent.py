@@ -1,14 +1,21 @@
 from __future__ import annotations
 
 import argparse
-import asyncio
 import json
 from pathlib import Path
 
+from app.core.config import settings
+from app.core.event_loop import run_async
 from app.db.session import SessionLocal
 from app.services.chat import ChatService
-from eval.metrics import citation_present, fact_coverage
 from eval.judge import judge_answer
+from eval.metrics import (
+    citation_precision,
+    citation_present,
+    citation_validity,
+    fact_coverage,
+    latency_stats,
+)
 
 
 def load_dataset(path: Path) -> list[dict]:
@@ -26,13 +33,21 @@ async def run(dataset_path: Path, limit: int | None = None, use_judge: bool = Fa
             result = await service.answer(
                 question=row["question"], thread_id=None, mode="auto", top_k=6
             )
+            citations = [c.model_dump(mode="json") for c in result.citations]
             case = {
                 "id": row["id"],
+                "question": row["question"],
+                "type": row.get("type"),
                 "answer": result.answer,
                 "route": result.route,
                 "fact_coverage": fact_coverage(result.answer, row.get("answer_facts", [])),
                 "citation_present": citation_present(result.answer),
+                "citation_validity": citation_validity(result.answer, citations),
+                "citation_precision": citation_precision(result.answer, citations),
+                "citation_count": len(citations),
+                "cited_docs": [c["filename"] for c in citations],
                 "tool_calls": len(result.tool_trace),
+                "steps": result.total_steps,
                 "latency_ms": result.latency_ms,
             }
             if use_judge:
@@ -40,7 +55,7 @@ async def run(dataset_path: Path, limit: int | None = None, use_judge: bool = Fa
                     question=row["question"],
                     expected_facts=row.get("answer_facts", []),
                     answer=result.answer,
-                    citations=[c.model_dump(mode="json") for c in result.citations],
+                    citations=citations,
                 )
                 case["judge"] = {
                     "correctness": judged.correctness,
@@ -49,16 +64,33 @@ async def run(dataset_path: Path, limit: int | None = None, use_judge: bool = Fa
                     "reason": judged.reason,
                 }
             per_case.append(case)
-    n = max(1, len(per_case))
-    return {
+
+    def average(key: str) -> float:
+        return sum(x[key] for x in per_case) / max(1, len(per_case))
+
+    summary = {
         "cases": len(per_case),
-        "avg_fact_coverage": sum(x["fact_coverage"] for x in per_case) / n,
-        "citation_rate": sum(x["citation_present"] for x in per_case) / n,
-        "avg_tool_calls": sum(x["tool_calls"] for x in per_case) / n,
-        "avg_latency_ms": sum(x["latency_ms"] for x in per_case) / n,
+        "llm_backend": settings.llm_backend,
+        "llm_model": settings.llm_model if settings.llm_backend != "mock" else "mock",
+        "temperature": settings.llm_temperature,
+        "is_real_llm": settings.llm_backend != "mock",
+        "avg_fact_coverage": average("fact_coverage"),
+        "citation_rate": average("citation_present"),
+        "avg_citation_validity": average("citation_validity"),
+        "avg_citation_precision": average("citation_precision"),
+        "avg_tool_calls": average("tool_calls"),
+        "avg_steps": average("steps"),
+        "latency_ms": latency_stats([x["latency_ms"] for x in per_case]),
         "judge_enabled": use_judge,
         "per_case": per_case,
     }
+    if use_judge:
+        judged_cases = [x for x in per_case if "judge" in x]
+        for key in ("correctness", "groundedness", "citation_quality"):
+            summary[f"judge_{key}"] = sum(x["judge"][key] for x in judged_cases) / max(
+                1, len(judged_cases)
+            )
+    return summary
 
 
 async def main() -> None:
@@ -75,4 +107,4 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    run_async(main())

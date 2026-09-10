@@ -1,5 +1,5 @@
 from contextlib import contextmanager
-from typing import Iterator
+from collections.abc import Iterator
 
 from opentelemetry import trace
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter

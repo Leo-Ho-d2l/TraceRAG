@@ -11,3 +11,6 @@ storage/
 *.db
 *.sqlite3
 .eval-results/
+
+# Python packaging build output
+*.egg-info/

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import uuid
 from pathlib import Path
 
@@ -18,12 +19,25 @@ from app.services.documents import (
     save_upload,
 )
 
+logger = logging.getLogger(__name__)
+
 router = APIRouter(prefix="/v1/documents", tags=["documents"])
 
 
 async def _ingest_inline(document_id: uuid.UUID) -> None:
-    async with SessionLocal() as session:
-        await IngestionService(session).ingest(document_id)
+    """Run ingestion inside the request's background task.
+
+    ``IngestionService.ingest`` re-raises so that Celery can retry, and it has
+    already recorded the failure on the document row by then. Letting that
+    exception escape the background task produced an unhandled ASGI exception for
+    a document that is correctly marked ``failed`` -- and made any ASGI test
+    client raise instead of observing the recorded status.
+    """
+    try:
+        async with SessionLocal() as session:
+            await IngestionService(session).ingest(document_id)
+    except Exception:
+        logger.exception("inline ingestion failed", extra={"document_id": str(document_id)})
 
 
 def _dispatch_celery(document_id: uuid.UUID) -> None:

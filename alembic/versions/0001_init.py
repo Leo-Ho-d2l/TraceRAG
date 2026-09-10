@@ -23,8 +23,14 @@ depends_on: str | Sequence[str] | None = None
 def upgrade() -> None:
     op.execute("CREATE EXTENSION IF NOT EXISTS vector")
 
-    document_status = postgresql.ENUM("queued", "processing", "ready", "failed", name="document_status")
-    chat_role = postgresql.ENUM("user", "assistant", name="chat_role")
+    # create_type=False: the types are created explicitly below so that
+    # checkfirst=True makes the migration re-runnable. Without it SQLAlchemy
+    # would emit a second CREATE TYPE from create_table and fail with
+    # DuplicateObject.
+    document_status = postgresql.ENUM(
+        "queued", "processing", "ready", "failed", name="document_status", create_type=False
+    )
+    chat_role = postgresql.ENUM("user", "assistant", name="chat_role", create_type=False)
     document_status.create(op.get_bind(), checkfirst=True)
     chat_role.create(op.get_bind(), checkfirst=True)
 

@@ -1,0 +1,27 @@
+# The Dockerfile ends with `COPY . /app`, which would otherwise bake every local
+# file into the image -- including `.env` with its API key. A secret written into
+# a layer stays readable in the image even after the file is deleted, so it must
+# never enter the build context. The running container receives configuration
+# through `env_file: .env` at runtime instead.
+.env
+
+# Local virtualenv and tool caches (the image installs its own dependencies)
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.eval-results/
+*.egg-info/
+
+# Local runtime state; Compose mounts ./storage over this
+storage/
+
+# Version-control and compose metadata
+.git/
+.gitignore
+docker-compose*.yml
+
+# Debugging report and manifest are documentation, not runtime inputs
+DEBUG_REPORT.md
+MANIFEST.txt

@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import argparse
-import asyncio
 import json
 from pathlib import Path
 
 from eval.run_retrieval import run
+
+from app.core.event_loop import run_async
 
 
 async def main() -> None:
@@ -45,4 +46,4 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    run_async(main())
