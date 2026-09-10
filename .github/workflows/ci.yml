@@ -11,9 +11,15 @@ jobs:
       REDIS_URL: redis://localhost:6379/0
       STORAGE_DIR: /tmp/tracerag-storage
       INGESTION_MODE: inline
-      EMBEDDING_BACKEND: hash
+      # Real local models: the retrieval tests assert semantic behaviour and
+      # rerank scores, which the hash embeddings and the no-op reranker cannot
+      # provide. Nothing here needs an API key.
+      EMBEDDING_BACKEND: fastembed
+      EMBEDDING_MODEL: BAAI/bge-small-en-v1.5
       EMBEDDING_DIM: "384"
-      RERANK_BACKEND: none
+      RERANK_BACKEND: fastembed
+      RERANK_MODEL: Xenova/ms-marco-MiniLM-L-6-v2
+      # Tests force this too (tests/conftest.py); CI has no key by design.
       LLM_BACKEND: mock
     services:
       postgres:
