@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tracerag"
-version = "0.1.0"
+version = "1.0.0"
 description = "Production-oriented Agentic RAG reference project with hybrid retrieval, reranking, evaluation and tracing."
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 license = {text = "MIT"}
-authors = [{name = "TraceRAG contributors"}]
+authors = [{name = "Leo-Ho-d2l"}]
 dependencies = [
   "fastapi>=0.120,<1",
   "uvicorn[standard]>=0.35,<1",

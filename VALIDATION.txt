@@ -1,4 +1,4 @@
-TraceRAG v0.1.0 — validation record
+TraceRAG v1.0.0 — validation record
 Generated: 2026-09-10
 
 WHAT WAS RUN

@@ -1,10 +1,30 @@
 # TraceRAG
 
+[![CI](https://github.com/Leo-Ho-d2l/TraceRAG/actions/workflows/ci.yml/badge.svg)](https://github.com/Leo-Ho-d2l/TraceRAG/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.11--3.13-3776AB?logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-4169E1?logo=postgresql&logoColor=white)
+![LangGraph](https://img.shields.io/badge/Agent-LangGraph-111111)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Release](https://img.shields.io/badge/release-v1.0.0-blue)
+
+[中文说明](README.zh-CN.md) · [Architecture](#architecture) · [Benchmark](#benchmark) · [Debug report](DEBUG_REPORT.md) · [Raw benchmark artifacts](artifacts/benchmark/)
+
+### Engineering snapshot
+
+| Signal | Verified result |
+|---|---|
+| Automated tests | **63 passed** + `ruff check .` |
+| Retrieval quality | Hybrid + rerank **Recall@5 0.9833 / MRR 0.9833** |
+| Citation reliability | **100% citation validity** on the 30-case agent benchmark |
+| LLM evaluation | Judge correctness **0.978**, groundedness **0.988** |
+| Measured tuning | Rerank p50 **417 ms → 329 ms (-21%)** after candidate-pool tuning |
+| Full stack | Docker Compose + PostgreSQL/pgvector + Redis + Celery + real LLM verified |
+
 **An Agentic RAG service: hybrid retrieval (pgvector + PostgreSQL lexical + RRF + cross-encoder reranking), a bounded LangGraph research agent with validated tool calling, and source-grounded citations — evaluated on a self-maintained benchmark.**
 
-TraceRAG is deliberately smaller than platforms such as Onyx or RAGFlow. The
-goal is an architecture that is realistic enough to defend in an interview and
-small enough for one engineer to understand end to end.
+TraceRAG is a compact reference implementation for retrieval-heavy LLM applications.
+It keeps ingestion, retrieval, agent execution, citations, caching and evaluation
+explicit so each stage can be inspected and measured independently.
 
 ## Key technical highlights
 
@@ -288,7 +308,7 @@ TraceRAG/
 ├── sample_data/        # fictional AcmeCloud enterprise corpus
 ├── scripts/            # seed and CLI demo scripts
 ├── tests/              # unit + database-backed integration tests
-└── docs/               # architecture and resume-evidence notes
+└── docs/               # architecture notes
 ```
 
 ## API surface
@@ -359,7 +379,7 @@ is meant to demonstrate.
 - Ingestion runs in-process when `INGESTION_MODE=inline`; the Celery path is
   verified but is not the default for local development.
 
-## Non-goals for V1
+## Non-goals for V1.0
 
 - model fine-tuning or RLHF
 - GPU model serving
