@@ -1,8 +1,18 @@
 # TraceRAG 中文说明
 
-TraceRAG 是一个面向 LLM 应用工程的 Agentic RAG 参考实现。项目重点不是“聊天 UI”，而是把文档摄取、混合检索、重排、Agent 工具调用、Citation 校验、缓存、异步任务和 Evaluation 做成一条可运行、可测量、可复现的链路。
-
 > English documentation: [README.md](README.md)
+
+> **一句话：** 面向跨文档企业知识问答的可评测 Agentic RAG 系统，重点验证检索质量、Agent 执行边界与 Citation 可靠性。  
+> `多格式摄取 → Dense + PostgreSQL FTS → RRF → Cross-Encoder Rerank → LangGraph Research Agent → Citation Validation`
+
+## 30 秒看懂
+
+| | |
+|---|---|
+| **解决问题** | 单次检索对跨文档问题覆盖不足，生成答案又需要可追溯、可校验的证据引用。 |
+| **核心链路** | 异步文档摄取 + Hybrid Retrieval + 有界 Research Agent + Evidence 聚合 + Citation Validation。 |
+| **评测证据** | 30 题检索/Agent Benchmark、逐题 raw artifacts、63 项自动化测试、真实 Docker 全栈验证。 |
+| **关键优化** | 修复 lexical query 语义后 Sparse Recall@5 **0.0167→0.9833**；Rerank 候选池调优后 p50 **417 ms→329 ms（-21%）**。 |
 
 ## 核心能力
 
