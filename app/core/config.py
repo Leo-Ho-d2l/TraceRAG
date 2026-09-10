@@ -37,7 +37,12 @@ class Settings(BaseSettings):
     chunk_overlap_chars: int = 180
     dense_k: int = 20
     sparse_k: int = 20
-    rerank_candidates: int = 12
+    # How many RRF candidates the cross-encoder sees. Measured on the 30-case
+    # benchmark: 12 candidates scored recall@5 0.9722 / MRR 0.9833 at 417 ms p50,
+    # while 6 scored recall@5 0.9833 / MRR 0.9833 at ~355 ms -- a larger pool let
+    # the reranker promote a distractor above the gold document. See
+    # DEBUG_REPORT.md "Optimizations".
+    rerank_candidates: int = 6
     default_top_k: int = 6
     rrf_k: int = 60
     retrieval_cache_ttl_seconds: int = 300

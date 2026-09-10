@@ -1,0 +1,5 @@
+strategy,rerank,top_k,recall_at_k,precision_at_k,mrr,latency_p50_ms,latency_mean_ms,latency_p95_ms
+dense,False,5,0.966667,0.266667,0.966667,60.763,75.1,109.251
+sparse,False,5,1.0,0.28,0.916667,3.465,3.693,6.025
+hybrid,False,5,0.983333,0.273333,0.983333,58.282,66.153,103.482
+hybrid,True,5,0.972222,0.266667,0.983333,417.413,423.639,512.796

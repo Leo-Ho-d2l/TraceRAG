@@ -1,0 +1,3155 @@
+{
+  "phase": "baseline",
+  "generated_at": "2026-09-10T11:09:32.901085+00:00",
+  "top_k": 5,
+  "dataset": "eval\\dataset.jsonl",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "llm_backend": "openai_compatible",
+    "llm_model": "deepseek-flash",
+    "llm_temperature": 0.0,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "embedding_dim": 384,
+    "rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2",
+    "chunk_target_chars": 1400,
+    "chunk_overlap_chars": 180,
+    "dense_k": 20,
+    "sparse_k": 20,
+    "rerank_candidates": 12,
+    "default_top_k": 6,
+    "rrf_k": 60,
+    "max_agent_steps": 5
+  },
+  "retrieval": [
+    {
+      "cases": 30,
+      "top_k": 5,
+      "rerank": false,
+      "strategy": "dense",
+      "use_cache": false,
+      "recall_at_k": 0.9666666666666667,
+      "precision_at_k": 0.26666666666666666,
+      "mrr": 0.9666666666666667,
+      "latency_ms": {
+        "mean": 75.0995,
+        "p50": 60.7625,
+        "p95": 109.251,
+        "min": 49.452,
+        "max": 337.947
+      },
+      "per_case": [
+        {
+          "id": "q01",
+          "question": "How long are audit logs retained on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 0.5,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 337.947,
+          "cached": false
+        },
+        {
+          "id": "q02",
+          "question": "What is the default Enterprise audit log retention period?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "pricing.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 109.251,
+          "cached": false
+        },
+        {
+          "id": "q03",
+          "question": "Which plans support SAML SSO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 101.978,
+          "cached": false
+        },
+        {
+          "id": "q04",
+          "question": "What is the Business monthly price and annual-commitment monthly price?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "pricing.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 102.856,
+          "cached": false
+        },
+        {
+          "id": "q05",
+          "question": "What happens when the API rate limit is exceeded?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 96.309,
+          "cached": false
+        },
+        {
+          "id": "q06",
+          "question": "How long is an idempotency key retained?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "security.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 49.452,
+          "cached": false
+        },
+        {
+          "id": "q07",
+          "question": "What timeout should interactive API clients use?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "deployment.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 54.166,
+          "cached": false
+        },
+        {
+          "id": "q08",
+          "question": "Is private networking available on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "pricing.md",
+            "api_limits.md",
+            "support.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 51.861,
+          "cached": false
+        },
+        {
+          "id": "q09",
+          "question": "How long does a dedicated deployment typically take to provision?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 56.793,
+          "cached": false
+        },
+        {
+          "id": "q10",
+          "question": "What are the standard Enterprise RPO and RTO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "observability.md",
+            "support.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 54.419,
+          "cached": false
+        },
+        {
+          "id": "q11",
+          "question": "Compare Business and Enterprise disaster recovery objectives.",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 55.426,
+          "cached": false
+        },
+        {
+          "id": "q12",
+          "question": "Compare Business and Enterprise log retention for audit logs and application logs.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 62.137,
+          "cached": false
+        },
+        {
+          "id": "q13",
+          "question": "Which plan supports OpenTelemetry trace export and what content is excluded by default?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "observability.md",
+            "api_limits.md",
+            "deployment.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 60.947,
+          "cached": false
+        },
+        {
+          "id": "q14",
+          "question": "Compare the Business and Enterprise availability targets.",
+          "type": "comparison",
+          "ranked_docs": [
+            "observability.md",
+            "disaster_recovery.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 57.967,
+          "cached": false
+        },
+        {
+          "id": "q15",
+          "question": "What is the severity-one support response target for Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md",
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 57.566,
+          "cached": false
+        },
+        {
+          "id": "q16",
+          "question": "How far in advance is planned maintenance announced?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "deployment.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 54.059,
+          "cached": false
+        },
+        {
+          "id": "q17",
+          "question": "What data residency regions can Enterprise customers select?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "disaster_recovery.md",
+            "observability.md",
+            "pricing.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 70.909,
+          "cached": false
+        },
+        {
+          "id": "q18",
+          "question": "Can an Enterprise customer get customer-managed encryption keys and private networking?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "deployment.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.6,
+          "rr": 1.0,
+          "latency_ms": 64.819,
+          "cached": false
+        },
+        {
+          "id": "q19",
+          "question": "Compare Business and Enterprise operational visibility features.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 0.5,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 84.334,
+          "cached": false
+        },
+        {
+          "id": "q20",
+          "question": "What retry behavior is recommended for 429 and transient 5xx responses?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "deployment.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 62.792,
+          "cached": false
+        },
+        {
+          "id": "q21",
+          "question": "What happens if the same idempotency key is reused with a different body?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "security.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 71.327,
+          "cached": false
+        },
+        {
+          "id": "q22",
+          "question": "Compare the release schedule for public SaaS and dedicated deployments.",
+          "type": "comparison",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 57.101,
+          "cached": false
+        },
+        {
+          "id": "q23",
+          "question": "Which plans can require MFA for all workspace members?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "security.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 56.096,
+          "cached": false
+        },
+        {
+          "id": "q24",
+          "question": "What alert integrations are available on Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "observability.md",
+            "pricing.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 51.654,
+          "cached": false
+        },
+        {
+          "id": "q25",
+          "question": "How do Business and Enterprise differ for severity-two support response targets?",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 57.361,
+          "cached": false
+        },
+        {
+          "id": "q26",
+          "question": "Can dedicated deployments delay critical security patches?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "api_limits.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 62.435,
+          "cached": false
+        },
+        {
+          "id": "q27",
+          "question": "What is the restore process before data is merged back into production?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 58.044,
+          "cached": false
+        },
+        {
+          "id": "q28",
+          "question": "What is the customer notification target after a confirmed material security incident?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "support.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 60.578,
+          "cached": false
+        },
+        {
+          "id": "q29",
+          "question": "Which Enterprise observability and security data can be exported to external systems?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "pricing.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 61.372,
+          "cached": false
+        },
+        {
+          "id": "q30",
+          "question": "Compare the operational commitments that distinguish Enterprise from Business across support, availability, and audit retention.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "pricing.md",
+            "disaster_recovery.md",
+            "support.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md",
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.6,
+          "rr": 1.0,
+          "latency_ms": 71.029,
+          "cached": false
+        }
+      ]
+    },
+    {
+      "cases": 30,
+      "top_k": 5,
+      "rerank": false,
+      "strategy": "sparse",
+      "use_cache": false,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.28,
+      "mrr": 0.9166666666666666,
+      "latency_ms": {
+        "mean": 3.6933,
+        "p50": 3.4645,
+        "p95": 6.025,
+        "min": 1.581,
+        "max": 12.999
+      },
+      "per_case": [
+        {
+          "id": "q01",
+          "question": "How long are audit logs retained on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "support.md",
+            "observability.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 12.999,
+          "cached": false
+        },
+        {
+          "id": "q02",
+          "question": "What is the default Enterprise audit log retention period?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 6.025,
+          "cached": false
+        },
+        {
+          "id": "q03",
+          "question": "Which plans support SAML SSO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "pricing.md",
+            "security.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 3.004,
+          "cached": false
+        },
+        {
+          "id": "q04",
+          "question": "What is the Business monthly price and annual-commitment monthly price?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "pricing.md",
+            "observability.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 4.6,
+          "cached": false
+        },
+        {
+          "id": "q05",
+          "question": "What happens when the API rate limit is exceeded?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "observability.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 3.269,
+          "cached": false
+        },
+        {
+          "id": "q06",
+          "question": "How long is an idempotency key retained?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.606,
+          "cached": false
+        },
+        {
+          "id": "q07",
+          "question": "What timeout should interactive API clients use?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "security.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.985,
+          "cached": false
+        },
+        {
+          "id": "q08",
+          "question": "Is private networking available on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "support.md",
+            "pricing.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 3.901,
+          "cached": false
+        },
+        {
+          "id": "q09",
+          "question": "How long does a dedicated deployment typically take to provision?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.108,
+          "cached": false
+        },
+        {
+          "id": "q10",
+          "question": "What are the standard Enterprise RPO and RTO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "observability.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 3.683,
+          "cached": false
+        },
+        {
+          "id": "q11",
+          "question": "Compare Business and Enterprise disaster recovery objectives.",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "disaster_recovery.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 3.501,
+          "cached": false
+        },
+        {
+          "id": "q12",
+          "question": "Compare Business and Enterprise log retention for audit logs and application logs.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "pricing.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 3.547,
+          "cached": false
+        },
+        {
+          "id": "q13",
+          "question": "Which plan supports OpenTelemetry trace export and what content is excluded by default?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "observability.md",
+            "security.md",
+            "api_limits.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.74,
+          "cached": false
+        },
+        {
+          "id": "q14",
+          "question": "Compare the Business and Enterprise availability targets.",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "observability.md",
+            "security.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 3.749,
+          "cached": false
+        },
+        {
+          "id": "q15",
+          "question": "What is the severity-one support response target for Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md",
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 4.292,
+          "cached": false
+        },
+        {
+          "id": "q16",
+          "question": "How far in advance is planned maintenance announced?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.432,
+          "cached": false
+        },
+        {
+          "id": "q17",
+          "question": "What data residency regions can Enterprise customers select?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "support.md",
+            "pricing.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 4.896,
+          "cached": false
+        },
+        {
+          "id": "q18",
+          "question": "Can an Enterprise customer get customer-managed encryption keys and private networking?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.6,
+          "rr": 1.0,
+          "latency_ms": 4.354,
+          "cached": false
+        },
+        {
+          "id": "q19",
+          "question": "Compare Business and Enterprise operational visibility features.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "support.md",
+            "security.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 0.5,
+          "latency_ms": 4.199,
+          "cached": false
+        },
+        {
+          "id": "q20",
+          "question": "What retry behavior is recommended for 429 and transient 5xx responses?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 1.686,
+          "cached": false
+        },
+        {
+          "id": "q21",
+          "question": "What happens if the same idempotency key is reused with a different body?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 1.581,
+          "cached": false
+        },
+        {
+          "id": "q22",
+          "question": "Compare the release schedule for public SaaS and dedicated deployments.",
+          "type": "comparison",
+          "ranked_docs": [
+            "deployment.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.118,
+          "cached": false
+        },
+        {
+          "id": "q23",
+          "question": "Which plans can require MFA for all workspace members?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "disaster_recovery.md",
+            "api_limits.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.348,
+          "cached": false
+        },
+        {
+          "id": "q24",
+          "question": "What alert integrations are available on Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "disaster_recovery.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 4.558,
+          "cached": false
+        },
+        {
+          "id": "q25",
+          "question": "How do Business and Enterprise differ for severity-two support response targets?",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "security.md",
+            "disaster_recovery.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 4.439,
+          "cached": false
+        },
+        {
+          "id": "q26",
+          "question": "Can dedicated deployments delay critical security patches?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.309,
+          "cached": false
+        },
+        {
+          "id": "q27",
+          "question": "What is the restore process before data is merged back into production?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "security.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.468,
+          "cached": false
+        },
+        {
+          "id": "q28",
+          "question": "What is the customer notification target after a confirmed material security incident?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "support.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 2.686,
+          "cached": false
+        },
+        {
+          "id": "q29",
+          "question": "Which Enterprise observability and security data can be exported to external systems?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 3.428,
+          "cached": false
+        },
+        {
+          "id": "q30",
+          "question": "Compare the operational commitments that distinguish Enterprise from Business across support, availability, and audit retention.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "support.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md",
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.6,
+          "rr": 1.0,
+          "latency_ms": 4.288,
+          "cached": false
+        }
+      ]
+    },
+    {
+      "cases": 30,
+      "top_k": 5,
+      "rerank": false,
+      "strategy": "hybrid",
+      "use_cache": false,
+      "recall_at_k": 0.9833333333333333,
+      "precision_at_k": 0.2733333333333334,
+      "mrr": 0.9833333333333333,
+      "latency_ms": {
+        "mean": 66.15306666666666,
+        "p50": 58.282,
+        "p95": 103.482,
+        "min": 51.506,
+        "max": 104.395
+      },
+      "per_case": [
+        {
+          "id": "q01",
+          "question": "How long are audit logs retained on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "support.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 95.117,
+          "cached": false
+        },
+        {
+          "id": "q02",
+          "question": "What is the default Enterprise audit log retention period?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "observability.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 99.924,
+          "cached": false
+        },
+        {
+          "id": "q03",
+          "question": "Which plans support SAML SSO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "pricing.md",
+            "security.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 103.482,
+          "cached": false
+        },
+        {
+          "id": "q04",
+          "question": "What is the Business monthly price and annual-commitment monthly price?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "pricing.md",
+            "observability.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 96.535,
+          "cached": false
+        },
+        {
+          "id": "q05",
+          "question": "What happens when the API rate limit is exceeded?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "observability.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 104.395,
+          "cached": false
+        },
+        {
+          "id": "q06",
+          "question": "How long is an idempotency key retained?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "observability.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 55.833,
+          "cached": false
+        },
+        {
+          "id": "q07",
+          "question": "What timeout should interactive API clients use?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 57.888,
+          "cached": false
+        },
+        {
+          "id": "q08",
+          "question": "Is private networking available on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "pricing.md",
+            "security.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 51.834,
+          "cached": false
+        },
+        {
+          "id": "q09",
+          "question": "How long does a dedicated deployment typically take to provision?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 58.37,
+          "cached": false
+        },
+        {
+          "id": "q10",
+          "question": "What are the standard Enterprise RPO and RTO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 63.722,
+          "cached": false
+        },
+        {
+          "id": "q11",
+          "question": "Compare Business and Enterprise disaster recovery objectives.",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 57.058,
+          "cached": false
+        },
+        {
+          "id": "q12",
+          "question": "Compare Business and Enterprise log retention for audit logs and application logs.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "pricing.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 66.814,
+          "cached": false
+        },
+        {
+          "id": "q13",
+          "question": "Which plan supports OpenTelemetry trace export and what content is excluded by default?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "observability.md",
+            "api_limits.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 78.211,
+          "cached": false
+        },
+        {
+          "id": "q14",
+          "question": "Compare the Business and Enterprise availability targets.",
+          "type": "comparison",
+          "ranked_docs": [
+            "observability.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 55.586,
+          "cached": false
+        },
+        {
+          "id": "q15",
+          "question": "What is the severity-one support response target for Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md",
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 52.633,
+          "cached": false
+        },
+        {
+          "id": "q16",
+          "question": "How far in advance is planned maintenance announced?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "deployment.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 51.506,
+          "cached": false
+        },
+        {
+          "id": "q17",
+          "question": "What data residency regions can Enterprise customers select?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "disaster_recovery.md",
+            "support.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 67.749,
+          "cached": false
+        },
+        {
+          "id": "q18",
+          "question": "Can an Enterprise customer get customer-managed encryption keys and private networking?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.6,
+          "rr": 1.0,
+          "latency_ms": 67.06,
+          "cached": false
+        },
+        {
+          "id": "q19",
+          "question": "Compare Business and Enterprise operational visibility features.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 0.5,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 58.194,
+          "cached": false
+        },
+        {
+          "id": "q20",
+          "question": "What retry behavior is recommended for 429 and transient 5xx responses?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 66.671,
+          "cached": false
+        },
+        {
+          "id": "q21",
+          "question": "What happens if the same idempotency key is reused with a different body?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "security.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 63.12,
+          "cached": false
+        },
+        {
+          "id": "q22",
+          "question": "Compare the release schedule for public SaaS and dedicated deployments.",
+          "type": "comparison",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 56.031,
+          "cached": false
+        },
+        {
+          "id": "q23",
+          "question": "Which plans can require MFA for all workspace members?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "api_limits.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 56.932,
+          "cached": false
+        },
+        {
+          "id": "q24",
+          "question": "What alert integrations are available on Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "observability.md",
+            "security.md",
+            "disaster_recovery.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 55.761,
+          "cached": false
+        },
+        {
+          "id": "q25",
+          "question": "How do Business and Enterprise differ for severity-two support response targets?",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 61.451,
+          "cached": false
+        },
+        {
+          "id": "q26",
+          "question": "Can dedicated deployments delay critical security patches?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "security.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 54.066,
+          "cached": false
+        },
+        {
+          "id": "q27",
+          "question": "What is the restore process before data is merged back into production?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "security.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 53.538,
+          "cached": false
+        },
+        {
+          "id": "q28",
+          "question": "What is the customer notification target after a confirmed material security incident?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 57.76,
+          "cached": false
+        },
+        {
+          "id": "q29",
+          "question": "Which Enterprise observability and security data can be exported to external systems?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "security.md",
+            "pricing.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 56.767,
+          "cached": false
+        },
+        {
+          "id": "q30",
+          "question": "Compare the operational commitments that distinguish Enterprise from Business across support, availability, and audit retention.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "security.md",
+            "pricing.md",
+            "support.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md",
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.6,
+          "rr": 1.0,
+          "latency_ms": 60.584,
+          "cached": false
+        }
+      ]
+    },
+    {
+      "cases": 30,
+      "top_k": 5,
+      "rerank": true,
+      "strategy": "hybrid",
+      "use_cache": false,
+      "recall_at_k": 0.9722222222222222,
+      "precision_at_k": 0.26666666666666666,
+      "mrr": 0.9833333333333333,
+      "latency_ms": {
+        "mean": 423.63913333333335,
+        "p50": 417.4135,
+        "p95": 512.796,
+        "min": 311.358,
+        "max": 589.023
+      },
+      "per_case": [
+        {
+          "id": "q01",
+          "question": "How long are audit logs retained on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 424.231,
+          "cached": false
+        },
+        {
+          "id": "q02",
+          "question": "What is the default Enterprise audit log retention period?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 352.736,
+          "cached": false
+        },
+        {
+          "id": "q03",
+          "question": "Which plans support SAML SSO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 512.796,
+          "cached": false
+        },
+        {
+          "id": "q04",
+          "question": "What is the Business monthly price and annual-commitment monthly price?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "pricing.md",
+            "observability.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 399.361,
+          "cached": false
+        },
+        {
+          "id": "q05",
+          "question": "What happens when the API rate limit is exceeded?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 425.458,
+          "cached": false
+        },
+        {
+          "id": "q06",
+          "question": "How long is an idempotency key retained?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "observability.md",
+            "security.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 355.535,
+          "cached": false
+        },
+        {
+          "id": "q07",
+          "question": "What timeout should interactive API clients use?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 410.596,
+          "cached": false
+        },
+        {
+          "id": "q08",
+          "question": "Is private networking available on Business?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "pricing.md",
+            "observability.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 353.531,
+          "cached": false
+        },
+        {
+          "id": "q09",
+          "question": "How long does a dedicated deployment typically take to provision?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "disaster_recovery.md",
+            "observability.md",
+            "api_limits.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 366.527,
+          "cached": false
+        },
+        {
+          "id": "q10",
+          "question": "What are the standard Enterprise RPO and RTO?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "observability.md",
+            "pricing.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 445.303,
+          "cached": false
+        },
+        {
+          "id": "q11",
+          "question": "Compare Business and Enterprise disaster recovery objectives.",
+          "type": "comparison",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "support.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 311.358,
+          "cached": false
+        },
+        {
+          "id": "q12",
+          "question": "Compare Business and Enterprise log retention for audit logs and application logs.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "security.md",
+            "observability.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 435.465,
+          "cached": false
+        },
+        {
+          "id": "q13",
+          "question": "Which plan supports OpenTelemetry trace export and what content is excluded by default?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "observability.md",
+            "security.md",
+            "deployment.md",
+            "support.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 589.023,
+          "cached": false
+        },
+        {
+          "id": "q14",
+          "question": "Compare the Business and Enterprise availability targets.",
+          "type": "comparison",
+          "ranked_docs": [
+            "observability.md",
+            "support.md",
+            "disaster_recovery.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 489.499,
+          "cached": false
+        },
+        {
+          "id": "q15",
+          "question": "What is the severity-one support response target for Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md",
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 508.845,
+          "cached": false
+        },
+        {
+          "id": "q16",
+          "question": "How far in advance is planned maintenance announced?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "support.md",
+            "deployment.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 447.831,
+          "cached": false
+        },
+        {
+          "id": "q17",
+          "question": "What data residency regions can Enterprise customers select?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "disaster_recovery.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 465.789,
+          "cached": false
+        },
+        {
+          "id": "q18",
+          "question": "Can an Enterprise customer get customer-managed encryption keys and private networking?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "pricing.md",
+            "security.md",
+            "deployment.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md",
+            "pricing.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.6,
+          "rr": 1.0,
+          "latency_ms": 376.084,
+          "cached": false
+        },
+        {
+          "id": "q19",
+          "question": "Compare Business and Enterprise operational visibility features.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "support.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 0.5,
+          "precision": 0.2,
+          "rr": 0.5,
+          "latency_ms": 391.449,
+          "cached": false
+        },
+        {
+          "id": "q20",
+          "question": "What retry behavior is recommended for 429 and transient 5xx responses?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "support.md",
+            "security.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 367.842,
+          "cached": false
+        },
+        {
+          "id": "q21",
+          "question": "What happens if the same idempotency key is reused with a different body?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "api_limits.md",
+            "security.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "api_limits.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 432.58,
+          "cached": false
+        },
+        {
+          "id": "q22",
+          "question": "Compare the release schedule for public SaaS and dedicated deployments.",
+          "type": "comparison",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 503.738,
+          "cached": false
+        },
+        {
+          "id": "q23",
+          "question": "Which plans can require MFA for all workspace members?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "pricing.md",
+            "api_limits.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 445.621,
+          "cached": false
+        },
+        {
+          "id": "q24",
+          "question": "What alert integrations are available on Enterprise?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "observability.md",
+            "security.md",
+            "pricing.md"
+          ],
+          "gold_docs": [
+            "observability.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 393.601,
+          "cached": false
+        },
+        {
+          "id": "q25",
+          "question": "How do Business and Enterprise differ for severity-two support response targets?",
+          "type": "comparison",
+          "ranked_docs": [
+            "support.md",
+            "disaster_recovery.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "support.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 397.288,
+          "cached": false
+        },
+        {
+          "id": "q26",
+          "question": "Can dedicated deployments delay critical security patches?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "deployment.md",
+            "observability.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "deployment.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 397.008,
+          "cached": false
+        },
+        {
+          "id": "q27",
+          "question": "What is the restore process before data is merged back into production?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "disaster_recovery.md",
+            "security.md",
+            "deployment.md"
+          ],
+          "gold_docs": [
+            "disaster_recovery.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 362.392,
+          "cached": false
+        },
+        {
+          "id": "q28",
+          "question": "What is the customer notification target after a confirmed material security incident?",
+          "type": "single_hop",
+          "ranked_docs": [
+            "security.md",
+            "support.md",
+            "observability.md"
+          ],
+          "gold_docs": [
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.2,
+          "rr": 1.0,
+          "latency_ms": 406.867,
+          "cached": false
+        },
+        {
+          "id": "q29",
+          "question": "Which Enterprise observability and security data can be exported to external systems?",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md"
+          ],
+          "recall": 1.0,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 476.78,
+          "cached": false
+        },
+        {
+          "id": "q30",
+          "question": "Compare the operational commitments that distinguish Enterprise from Business across support, availability, and audit retention.",
+          "type": "multi_document",
+          "ranked_docs": [
+            "observability.md",
+            "pricing.md",
+            "security.md",
+            "disaster_recovery.md"
+          ],
+          "gold_docs": [
+            "observability.md",
+            "security.md",
+            "support.md"
+          ],
+          "recall": 0.6666666666666666,
+          "precision": 0.4,
+          "rr": 1.0,
+          "latency_ms": 464.04,
+          "cached": false
+        }
+      ]
+    }
+  ],
+  "agent": {
+    "cases": 30,
+    "llm_backend": "openai_compatible",
+    "llm_model": "deepseek-flash",
+    "temperature": 0.0,
+    "is_real_llm": true,
+    "avg_fact_coverage": 0.9655555555555555,
+    "citation_rate": 1.0,
+    "avg_citation_validity": 1.0,
+    "avg_citation_precision": 1.0,
+    "avg_tool_calls": 1.0,
+    "avg_steps": 0.8666666666666667,
+    "latency_ms": {
+      "mean": 4549.121,
+      "p50": 2946.05,
+      "p95": 10328.59,
+      "min": 2201.89,
+      "max": 15318.98
+    },
+    "judge_enabled": true,
+    "per_case": [
+      {
+        "id": "q01",
+        "question": "How long are audit logs retained on Business?",
+        "type": "single_hop",
+        "answer": "Audit logs are retained for **90 days** on Business. [S1][S2]",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 2,
+        "cited_docs": [
+          "security.md",
+          "pricing.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2519.22,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly states 90-day audit log retention on Business, matching the expected fact. Both cited excerpts directly support the claim: S1 states Business workspaces retain audit logs for 90 days, and S2 lists 90-day audit log retention in the Business plan. Citations use supplied labels and are attached to the relevant claim; answer is concise with no unsupported additions."
+        }
+      },
+      {
+        "id": "q02",
+        "question": "What is the default Enterprise audit log retention period?",
+        "type": "single_hop",
+        "answer": "The default Enterprise audit log retention period is **365 days** [S1][S2].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 2,
+        "cited_docs": [
+          "security.md",
+          "pricing.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2500.68,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly states the default Enterprise audit log retention period is 365 days, matching the expected fact. Both cited excerpts ([S1] security.md and [S2] pricing.md) explicitly state 365-day retention for Enterprise, and citations are attached to the relevant claim using only supplied labels."
+        }
+      },
+      {
+        "id": "q03",
+        "question": "Which plans support SAML SSO?",
+        "type": "single_hop",
+        "answer": "SAML SSO is supported on **Business** and **Enterprise** plans [S1]. It is included in the Business plan [S2], and Starter does not include SAML SSO [S3].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 3,
+        "cited_docs": [
+          "security.md",
+          "pricing.md",
+          "pricing.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2590.8,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "Answer correctly identifies Business and Enterprise, and all claims are directly supported by the cited excerpts with appropriate citation labels."
+        }
+      },
+      {
+        "id": "q04",
+        "question": "What is the Business monthly price and annual-commitment monthly price?",
+        "type": "single_hop",
+        "answer": "Business costs **$49 per user per month** when billed monthly, or **$39 per user per month** on an annual commitment [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "pricing.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2323.82,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly states the Business monthly price ($49) and annual-commitment monthly price ($39), matching the expected facts, and both claims are fully supported by the cited excerpt [S1]. The citation label is correct and attached to the relevant claim."
+        }
+      },
+      {
+        "id": "q05",
+        "question": "What happens when the API rate limit is exceeded?",
+        "type": "single_hop",
+        "answer": "When an API rate limit is exceeded, the API returns **HTTP 429** [S1].\n\nRelevant default limits: Starter workspaces allow **60 requests per minute per workspace**; Business workspaces allow **300 requests per minute**; Enterprise limits are negotiated in the customer contract [S1].\n\nSeparately, API requests above a contracted quota are charged only when **overage billing is enabled** for the workspace [S2]. The evidence does not specify retry headers, backoff requirements, or other consequences of receiving a 429.",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 2,
+        "cited_docs": [
+          "api_limits.md",
+          "pricing.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 4979.11,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "Answer directly states HTTP 429, matching the expected fact, and all additional factual claims are supported by the cited excerpts with relevant [S1] and [S2] labels."
+        }
+      },
+      {
+        "id": "q06",
+        "question": "How long is an idempotency key retained?",
+        "type": "single_hop",
+        "answer": "Idempotency keys are retained for **24 hours** [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "api_limits.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2788.71,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly states the retention period is 24 hours, matching the expected fact, and it is fully supported by the cited excerpt [S1] which explicitly says the key is retained for 24 hours. The citation uses only the supplied label and is attached to the relevant claim."
+        }
+      },
+      {
+        "id": "q07",
+        "question": "What timeout should interactive API clients use?",
+        "type": "single_hop",
+        "answer": "Interactive API clients should use a **5-second connection timeout** and an **overall request timeout of 30 seconds** [S1]. Bulk export jobs are asynchronous and are not subject to the 30-second interactive request timeout [S1].",
+        "route": "retrieve",
+        "fact_coverage": 0.5,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "api_limits.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2654.15,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "Answer states both expected timeouts (5-second connection timeout, 30-second overall request timeout) and the added detail about bulk exports is directly supported by the cited excerpt [S1], which is attached to the relevant claims and uses only the supplied label."
+        }
+      },
+      {
+        "id": "q08",
+        "question": "Is private networking available on Business?",
+        "type": "single_hop",
+        "answer": "No. Private networking is not available on Starter or Business plans; it is an Enterprise capability. [S1][S2]",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 2,
+        "cited_docs": [
+          "deployment.md",
+          "pricing.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2201.89,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly and correctly states that private networking is not available on Business and is an Enterprise capability, matching both expected facts. Both claims are fully supported by the cited excerpts: S1 explicitly states it is not available on Starter or Business, and S2 lists private networking as an Enterprise feature. Citations [S1][S2] are relevant and use only supplied labels."
+        }
+      },
+      {
+        "id": "q09",
+        "question": "How long does a dedicated deployment typically take to provision?",
+        "type": "single_hop",
+        "answer": "A dedicated deployment typically has a provisioning lead time of **three weeks** [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "deployment.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2345.57,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly states the expected fact (three weeks) and cites S1, whose excerpt explicitly confirms a typical provisioning lead time of three weeks for dedicated deployments."
+        }
+      },
+      {
+        "id": "q10",
+        "question": "What are the standard Enterprise RPO and RTO?",
+        "type": "single_hop",
+        "answer": "Enterprise has a standard RPO of **1 hour** and RTO of **4 hours** [S1]. More stringent Enterprise objectives may be negotiated for dedicated deployments [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "disaster_recovery.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 3054.69,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly states Enterprise RPO of 1 hour and RTO of 4 hours, matching the expected facts. Both claims (including the note about negotiated more stringent objectives) are fully supported by the cited excerpt [S1], and the citation label is used correctly and attached to the relevant claims."
+        }
+      },
+      {
+        "id": "q11",
+        "question": "Compare Business and Enterprise disaster recovery objectives.",
+        "type": "comparison",
+        "answer": "## Business vs. Enterprise Disaster Recovery Objectives\n\n**Recovery objectives (the core DR targets)** — from the disaster recovery document's \"Recovery objectives\" section:\n\n| Objective | Business | Enterprise |\n|---|---|---|\n| Recovery Point Objective (RPO) | 4 hours | 1 hour (standard) |\n| Recovery Time Objective (RTO) | 8 hours | 4 hours (standard) |\n\nEnterprise is cited as having \"more stringent Enterprise objectives\" that \"may be negotiated for dedicated deployments,\" i.e., its standard figures can be tightened contractually, whereas Business targets are stated as fixed values [S1]. (For context, Starter sits below both at 24-hour RPO/RTO [S1].)\n\n**Restore-request handling** — aligns with the objectives above: Business restore requests are \"normally started within four hours,\" while Enterprise restore requests receive a \"one-hour response target.\" In both cases a restore creates a new recovery workspace before data is merged back into production [S2].\n\n**Regional resilience architecture** — Business and Enterprise production services both replicate critical metadata across availability zones within the selected region. Enterprise customers with an approved multi-region addendum can additionally configure warm standby in a second geographic region, giving them a DR topology option Business does not have [S10].\n\n### Adjacent commitments that frame the DR picture\n\nThese aren't DR objectives per se, but they define the surrounding reliability/response envelope:\n\n- **Availability:** Business target is 99.9% monthly; Enterprise has a 99.95% monthly service-level objective, with separately negotiated objectives possible for dedicated deployments [S3].\n- **Incident response:** For severity-one production incidents, Business has a 4-hour initial response target vs. 1 hour for Enterprise; severity-two is 1 business day (Business) vs. 4 business hours (Enterprise) [S4].\n- **Support escalation:** Business gets priority tickets via the console; Enterprise adds a designated support escalation path [S8].\n- **Service reviews:** Enterprise can schedule quarterly operational reviews; Business receives self-service monthly usage reports but not scheduled quarterly reviews by default [S6].\n\n### Summary\n\nEnterprise DR objectives are uniformly tighter than Business: a 4× better RPO (1h vs. 4h), 2× better RTO (4h vs. 8h), and a faster restore-request response target (1h vs. 4h) [S1][S2]. Only Enterprise offers the optional multi-region warm-standby addendum, and only Enterprise objectives are explicitly negotiable for dedicated deployments [S1][S10].\n\n**Note on sourcing:** The sources are consistent — no disagreements appear between the disaster recovery, support, and observability documents on these figures. All DR-specific claims come from the single `disaster_recovery.md` document (Recovery objectives, Restore requests, Regional resilience sections) [S1][S2][S10].",
+        "route": "research",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 7,
+        "cited_docs": [
+          "disaster_recovery.md",
+          "disaster_recovery.md",
+          "disaster_recovery.md",
+          "observability.md",
+          "support.md",
+          "support.md",
+          "support.md"
+        ],
+        "tool_calls": 3,
+        "steps": 3,
+        "latency_ms": 10328.59,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 0.95,
+          "citation_quality": 1.0,
+          "reason": "Answer correctly compares Business and Enterprise DR objectives, including expected facts 4h/8h for Business and 1h/4h for Enterprise. Claims are well-supported by the cited excerpts, with only minor inferential phrasing. Citations are relevant and use supplied labels."
+        }
+      },
+      {
+        "id": "q12",
+        "question": "Compare Business and Enterprise log retention for audit logs and application logs.",
+        "type": "multi_document",
+        "answer": "## Log retention: Business vs. Enterprise\n\n**Audit logs**\n\n| Plan | Retention |\n|---|---|\n| Business | 90 days [S1] |\n| Enterprise | 365 days (stated as the default) [S1] |\n\n**Application logs**\n\n| Plan | Retention |\n|---|---|\n| Business | 14 days [S2] |\n| Enterprise | 30 days [S2] |\n\n### Supporting details\n- **Audit:** Enterprise administrators can additionally export audit events to an external SIEM via the audit log streaming integration [S1]. Audit log streaming is listed as an Enterprise plan feature [S3].\n- **Application:** Continuous export of logs to supported external observability platforms is available on Enterprise only [S2].\n- **Corroboration from plan/pricing docs:** The Business plan is documented as including \"90-day audit log retention\" [S4], and Enterprise as including \"365-day audit log retention\" [S3] — consistent with the security documentation.\n\n### Notes and caveats\n- The Enterprise audit figure is described as \"365 days **by default**\" [S1]. The sources do not specify whether Enterprise audit retention is adjustable (shorter or longer) or from what it may deviate, so treat 365 days as the documented default rather than a guaranteed fixed value.\n- No conflicting figures appeared across sources; the security, observability, and pricing documents agree.\n- **Related but distinct:** platform **service metrics** have different retention — 30 days on Business and 90 days on Enterprise [S5]. This is not the same as application logs (14/30 days) [S2], so avoid conflating the two. Trace export, which is Enterprise-only with configurable sampling of 1–100%, does not state a retention period [S10].\n\nUnless noted, the audited comparison is: **Business = 90-day audit / 14-day application; Enterprise = 365-day audit (default) / 30-day application.**",
+        "route": "research",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 6,
+        "cited_docs": [
+          "security.md",
+          "observability.md",
+          "pricing.md",
+          "pricing.md",
+          "observability.md",
+          "observability.md"
+        ],
+        "tool_calls": 3,
+        "steps": 3,
+        "latency_ms": 6591.68,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly compares audit log retention (Business 90 days, Enterprise 365 days) and application log retention (Business 14 days, Enterprise 30 days), and all substantive claims are supported by the cited supplied excerpts with appropriate labels."
+        }
+      },
+      {
+        "id": "q13",
+        "question": "Which plan supports OpenTelemetry trace export and what content is excluded by default?",
+        "type": "single_hop",
+        "answer": "**OpenTelemetry trace export is an Enterprise-plan capability.** Enterprise customers can enable distributed trace export using the OpenTelemetry Protocol (OTLP) [S1].\n\n**Content excluded by default: document content.**\n\nPer the Observability documentation, the trace export includes *request identifiers and service spans* but **excludes document content by default** [S1]. Sampling is configurable between 1% and 100% [S1].\n\nCorroborating context on Enterprise-only observability/data-export features:\n- Continuous export of application logs to supported external observability platforms is available on Enterprise [S6]; log retention is 14 days on Business vs. 30 days on Enterprise [S6].\n- The Enterprise plan description lists related data-egress capabilities such as audit log streaming and 365-day audit log retention [S7].\n- Enterprise administrators can export audit events to an external SIEM via the audit log streaming integration [S4].\n\n**Note on scope/limitations:** The corpus explicitly names only *document content* as the default exclusion, and only Enterprise as the plan supporting OTLP trace export. I found no source stating that Business or Starter plans support trace export, so the claim that it is Enterprise-only rests on the absence of such a statement combined with the features table [S7] — the sources do not disagree on this point.",
+        "route": "research",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 4,
+        "cited_docs": [
+          "observability.md",
+          "observability.md",
+          "pricing.md",
+          "security.md"
+        ],
+        "tool_calls": 3,
+        "steps": 3,
+        "latency_ms": 7823.94,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 0.95,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly states Enterprise as the plan supporting OpenTelemetry trace export and document content as excluded by default. These claims are directly supported by the cited excerpt [S1]. Additional corroborating citations are also grounded in the supplied excerpts. Minor inference about absence of contrary plan support slightly limits full groundedness, but the core answer is well-supported and citations are relevant and correctly labeled."
+        }
+      },
+      {
+        "id": "q14",
+        "question": "Compare the Business and Enterprise availability targets.",
+        "type": "comparison",
+        "answer": "## Availability targets: Business vs. Enterprise\n\n**The core figures** [S1]:\n- **Business:** 99.9% monthly availability, described in the source as a \"service target.\"\n- **Enterprise:** 99.95% monthly, described as a \"standard service-level objective\" (SLO).\n- **Dedicated Enterprise:** deployments \"may have a separately negotiated availability objective\" — i.e., the 99.95% figure is a floor for the standard offering, not necessarily the contracted value.\n\nSo Enterprise's standard numeric target is 0.05 percentage points higher than Business's, with the gap potentially widening under a dedicated agreement.\n\n**One caveat worth flagging:** the source labels these differently — Business as a \"service target\" and Enterprise as a \"service-level objective\" [S1]. The corpus does not state whether the two labels denote the same kind of commitment (e.g., contractual SLA with service credits) or different ones, and no separate SLA or service-credit document surfaced in search. I'd avoid treating them as interchangeable without confirmation.\n\n**Adjacent targets that follow the same tiering** (related, but not availability percentages):\n- **Recovery:** Business RPO 4h / RTO 8h; Enterprise standard RPO 1h / RTO 4h, with more stringent objectives negotiable for dedicated deployments [S4].\n- **Incident response:** Business 4h initial response for severity-one, one business day for severity-two; Enterprise 1h and 4 business hours respectively [S2].\n- **Restores:** Business requests normally started within 4h; Enterprise gets a 1h response target [S5].\n\n**Bottom line:** Enterprise is consistently the stronger tier — 99.95% vs. 99.9% monthly availability at standard, with room to negotiate further under a dedicated deployment, whereas Business availability appears fixed at 99.9% with no negotiated-availability language in the retrieved sources [S1][S4].\n\nIf you need this for a contract or procurement decision, the open question to resolve is whether the 99.9% and 99.95% figures carry contractual remedies — that isn't determinable from the corpus as retrieved.",
+        "route": "research",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 4,
+        "cited_docs": [
+          "observability.md",
+          "disaster_recovery.md",
+          "support.md",
+          "disaster_recovery.md"
+        ],
+        "tool_calls": 3,
+        "steps": 3,
+        "latency_ms": 9964.1,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 0.95,
+          "citation_quality": 0.95,
+          "reason": "Correctly compares Business 99.9% and Enterprise 99.95% availability targets. Most supporting claims are grounded in the cited excerpts, though some contractual-meaning caveats are interpretive rather than directly evidenced. Citations use supplied labels and are attached to relevant claims."
+        }
+      },
+      {
+        "id": "q15",
+        "question": "What is the severity-one support response target for Enterprise?",
+        "type": "single_hop",
+        "answer": "Enterprise has a **one-hour initial response target** for severity-one production incidents [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "support.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2379.92,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly states Enterprise's severity-one initial response target is one hour, directly supported by the cited excerpt S1, and the citation label matches the supplied evidence."
+        }
+      },
+      {
+        "id": "q16",
+        "question": "How far in advance is planned maintenance announced?",
+        "type": "single_hop",
+        "answer": "Planned maintenance that could materially affect service is announced at least **five business days in advance** [S1]. Emergency maintenance may occur without the standard notice when required to protect security or service integrity [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "support.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2268.19,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly states the required fact (five business days in advance) and is fully supported by the cited excerpt [S1], with the citation attached to the relevant claims and using only the supplied label."
+        }
+      },
+      {
+        "id": "q17",
+        "question": "What data residency regions can Enterprise customers select?",
+        "type": "single_hop",
+        "answer": "Enterprise customers can select the primary data region when creating a workspace. Supported production regions are:\n\n- United States\n- European Union\n- Singapore\n- Japan\n\nEnterprise plans include selectable data residency [S2]. Changing the primary region after workspace creation requires a migration coordinated with support [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 2,
+        "cited_docs": [
+          "pricing.md",
+          "security.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2965.11,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 0.8,
+          "reason": "The answer correctly lists all four expected regions (United States, European Union, Singapore, Japan) and the migration caveat, all directly supported by [S1]; the selectable data residency claim is supported by [S2]. Citations use only supplied labels and are attached to relevant claims, though the core region list is not explicitly cited (only the general claim and the migration note are), slightly weakening citation coverage."
+        }
+      },
+      {
+        "id": "q18",
+        "question": "Can an Enterprise customer get customer-managed encryption keys and private networking?",
+        "type": "multi_document",
+        "answer": "Yes — as an Enterprise customer you can get both, within regional limits:\n\n**Customer-managed encryption keys (CMK):** Enterprise customers may request customer-managed keys in supported regions. Baselines otherwise are TLS 1.2+ in transit and AES-256 at rest with keys rotated at least every 90 days [S2]. The Enterprise plan listing confirms CMK availability \"in supported regions\" [S1].\n\n**Private networking:** Enterprise can connect via private networking in the **United States and European Union** regions; it is not available on Starter or Business. A private connection typically takes two to five business days after network details are approved [S3].\n\nRelated Enterprise-only network/resilience options worth noting: dedicated single-tenant deployment (Enterprise agreement, one-year minimum commitment, ~3 week provisioning lead time) [S11], and warm standby in a second geographic region with an approved multi-region addendum [S6].\n\nTwo caveats: the sources say CMK is limited to \"supported regions\" without enumerating them [S1][S2], so you'd need to confirm which regions qualify for your tenant; and private networking is explicitly scoped to US and EU [S3].",
+        "route": "research",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 5,
+        "cited_docs": [
+          "security.md",
+          "pricing.md",
+          "deployment.md",
+          "deployment.md",
+          "disaster_recovery.md"
+        ],
+        "tool_calls": 2,
+        "steps": 2,
+        "latency_ms": 5420.4,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly confirms both Enterprise capabilities, cites relevant supplied excerpts for CMK and private networking, and all additional claims are supported by the cited evidence."
+        }
+      },
+      {
+        "id": "q19",
+        "question": "Compare Business and Enterprise operational visibility features.",
+        "type": "multi_document",
+        "answer": "## Business vs. Enterprise — Operational Visibility Features\n\nBoth tiers share the same core admin console, but Enterprise adds deeper retention, more export paths, richer alert routing, and proactive review touchpoints.\n\n### Where they differ\n\n| Visibility capability | Business | Enterprise | Evidence |\n|---|---|---|---|\n| Admin console service metrics | Request volume, error rate, p50/p95 latency, background job backlog — retained **30 days** | Same metrics — retained **90 days** | [S15] |\n| Application logs | Retained **14 days** | Retained **30 days**, plus continuous export to supported external observability platforms | [S8] |\n| Audit logs | **90-day** retention | **365-day** retention, plus streaming export to an external SIEM | [S11][S12] |\n| Alerting channels | Email alerts only | Email, **webhook, and pager** integrations (error rate, latency, or queue-threshold rules) | [S6] |\n| Distributed tracing | Not offered | **OTLP trace export**; request IDs + service spans (document content excluded by default); 1–100% configurable sampling | [S21] |\n| Proactive operational reviews | Self-service monthly usage reports; **no** scheduled reviews by default | **Quarterly** operational reviews (incidents, usage, reliability trends, architecture changes) | [S1] |\n| Availability objective | **99.9%** monthly availability target | Standard **99.95%** monthly SLO (negotiable for dedicated deployments) | [S3] |\n| Recovery objectives | RPO 4 h / RTO 8 h | Standard RPO **1 h** / RTO **4 h** (tighter terms negotiable) | [S4] |\n| Incident response targets | Sev-1: 4 h initial response; Sev-2: 1 business day | Sev-1: **1 h**; Sev-2: **4 business hours** | [S2] |\n| Restore request handling | Normally started within 4 h | **1-hour** response target | [S20] |\n| Regional resilience | Multi-AZ replication within region | Multi-AZ replication, **plus warm standby in a second region** with an approved multi-region addendum | [S5] |\n| Support escalation path | Priority tickets via console | Priority tickets **plus a designated escalation path** | [S19] |\n\n### Visibility-adjacent Enterprise-only items (affect what you can observe/control)\n\n- **Private networking** — available to Enterprise only in US and EU (not Starter or Business); ~2–5 business days to establish [S14].\n- **Data residency selection** — Enterprise can choose primary region (US, EU, Singapore, Japan) at workspace creation [S10].\n- **SCIM provisioning** and customer-managed encryption keys in supported regions [S7][S9].\n\n### Where they are the same\n\n- **Identity/access visibility controls**: SAML 2.0 SSO and required MFA are supported on both Business and Enterprise; SCIM is the Enterprise delta [S7].\n- **Maintenance notices**: planned maintenance affecting service is announced ≥5 business days ahead regardless of tier; emergency maintenance may occur without standard notice [S16].\n- **Security incident notification**: 24-hour notification target for confirmed incidents materially affecting customer data — not tier-differentiated [S18].\n\n### Summary\n\nBusiness provides solid baseline operational visibility — console metrics, email alerts, 14-day logs, 90-day audit logs, and monthly self-service reports — with a 99.9% availability target. Enterprise layers on **longer retention (90-day metrics, 30-day logs, 365-day audit logs), richer export and routing (OTLP traces, SIEM streaming, log export, webhook/pager alerts), stronger reliability guarantees (99.95% SLO, RPO 1 h/RTO 4 h, faster incident and restore responses), multi-region standby, and scheduled quarterly reviews**.\n\n**Note on scope/consistency:** The sources describe these as plan-level defaults. Enterprise availability, RPO/RTO, and API quotas are explicitly negotiable in contracts ([S3][S4][S9]), so individual Enterprise agreements may differ from the standard figures above. Business and Enterprise SLO/recovery figures come from separate documents (observability.md and disaster_recovery.md) and do not conflict with one another.",
+        "route": "research",
+        "fact_coverage": 0.8,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 19,
+        "cited_docs": [
+          "observability.md",
+          "observability.md",
+          "pricing.md",
+          "security.md",
+          "observability.md",
+          "observability.md",
+          "support.md",
+          "observability.md",
+          "disaster_recovery.md",
+          "support.md",
+          "disaster_recovery.md",
+          "disaster_recovery.md",
+          "support.md",
+          "deployment.md",
+          "security.md",
+          "security.md",
+          "pricing.md",
+          "support.md",
+          "security.md"
+        ],
+        "tool_calls": 7,
+        "steps": 5,
+        "latency_ms": 15318.98,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 0.95,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly compares Business and Enterprise operational visibility, including all expected facts: 30-day/90-day metric retention, 14-day/30-day log retention, and OpenTelemetry tracing. Claims are well supported by the cited excerpts, with only minor unsupported framing such as the shared core admin console. Citations are relevant and use only supplied labels."
+        }
+      },
+      {
+        "id": "q20",
+        "question": "What retry behavior is recommended for 429 and transient 5xx responses?",
+        "type": "single_hop",
+        "answer": "For HTTP 429 and transient 5xx responses, clients should retry with **exponential backoff and jitter**, honor the **Retry-After** header when present, and use a maximum of **five retries for interactive workloads** [S1]. HTTP 429 is returned when a rate limit is exceeded [S2].\n\nFor retries involving create or mutation endpoints, the API supports the **Idempotency-Key** header; keys are retained for 24 hours, and repeating a request with the same key and body returns the original successful result, while reusing the key with a different body returns HTTP 409 [S6].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 3,
+        "cited_docs": [
+          "api_limits.md",
+          "api_limits.md",
+          "api_limits.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 4990.77,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer includes all expected retry facts—exponential backoff, jitter, Retry-After, and five retries—and each claim is supported by the cited excerpts. Citations are relevant and use only the supplied labels."
+        }
+      },
+      {
+        "id": "q21",
+        "question": "What happens if the same idempotency key is reused with a different body?",
+        "type": "single_hop",
+        "answer": "Reusing the same idempotency key with a different request body returns **HTTP 409** [S1]. The key is retained for **24 hours** [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "api_limits.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2617.4,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly addresses the question, stating HTTP 409 for key reuse with a different body, matching the expected fact. Both claims (HTTP 409 and 24-hour retention) are supported by the cited excerpt [S1], which is the only supplied label and is correctly attached to the relevant claims. The extra 24-hour detail is grounded but not required."
+        }
+      },
+      {
+        "id": "q22",
+        "question": "Compare the release schedule for public SaaS and dedicated deployments.",
+        "type": "comparison",
+        "answer": "## Release Schedule Comparison: Public SaaS vs. Dedicated Deployments\n\n**Public SaaS (multi-tenant)**\n- This is the default deployment model, operated by AcmeCloud, and it receives **weekly production releases** [S1]. Business and Enterprise customers on this model can restrict inbound access by approved IP ranges [S3].\n\n**Dedicated Deployments (single-tenant)**\n- Dedicated deployments have the **option to select a two-week delayed release channel** rather than taking releases on the weekly SaaS cadence [S1]. This reflects their distinct commercial and operational profile: they are available only under an Enterprise agreement with a minimum one-year commitment, AcmeCloud operates the control plane while customer data is isolated in a dedicated environment, and there is a typical provisioning lead time of three weeks [S2].\n\n**The key nuance — delayed channel is not absolute**\n- The delay is a *selectable channel*, not a hard guarantee of being two weeks behind. **Critical security patches may bypass the delayed channel** when AcmeCloud determines immediate remediation is required [S1]. So dedicated customers choosing the delayed channel should expect that urgent security fixes can still be applied on the standard (non-delayed) timeline.\n\n**Related notice rules (apply to planned changes generally)**\n- Planned maintenance that could materially affect service is announced **at least five business days in advance**, while emergency maintenance may occur without standard notice when needed to protect security or service integrity [S15].\n\n### Summary table\n\n| Aspect | Public SaaS | Dedicated |\n|---|---|---|\n| Release cadence | Weekly production releases [S1] | Weekly by default, or opt in to a 2-week delayed channel [S1] |\n| Delay flexibility | None (weekly) [S1] | 2-week delay selectable [S1] |\n| Security patch exception | N/A | Critical patches may bypass the delayed channel [S1] |\n| Maintenance notice | ≥5 business days for material planned maintenance [S15] | Same ≥5 business days; emergency maintenance without standard notice [S15] |\n\n### Notable observation\nThe corpus does not state whether dedicated deployments on the standard (non-delayed) channel track the same weekly cadence as SaaS — only that a two-week delayed channel is *available* to them. The one source addressing the schedule [S1] describes SaaS as weekly and the dedicated delay as optional, but does not otherwise spell out the dedicated default cadence beyond that. This is a gap rather than a conflict; no sources disagree on the documented points.",
+        "route": "research",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 4,
+        "cited_docs": [
+          "deployment.md",
+          "deployment.md",
+          "deployment.md",
+          "support.md"
+        ],
+        "tool_calls": 4,
+        "steps": 3,
+        "latency_ms": 7661.44,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 0.9,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly captures both expected facts: public SaaS receives weekly releases and dedicated deployments can opt into a two-week delayed release channel, both cited to [S1]. All claims are tied to supplied labels [S1], [S2], [S3], [S15], and the cited excerpts support the stated facts. The only minor grounding stretch is the summary table's assertion that dedicated is 'weekly by default,' which [S1] does not explicitly state; notably, the answer itself flags this as a corpus gap, which "
+        }
+      },
+      {
+        "id": "q23",
+        "question": "Which plans can require MFA for all workspace members?",
+        "type": "single_hop",
+        "answer": "Business and Enterprise plans can require multi-factor authentication for all workspace members [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "security.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2413.72,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer names both required plans (Business and Enterprise) as stated in the cited excerpt, and the single claim is supported by and correctly attributed to [S1]."
+        }
+      },
+      {
+        "id": "q24",
+        "question": "What alert integrations are available on Enterprise?",
+        "type": "single_hop",
+        "answer": "Enterprise supports **email, webhook, and pager** alert integrations [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "observability.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2926.99,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly states the three Enterprise alert integrations (email, webhook, pager), matching all expected facts, and the single citation [S1] supports the claim and uses a supplied label."
+        }
+      },
+      {
+        "id": "q25",
+        "question": "How do Business and Enterprise differ for severity-two support response targets?",
+        "type": "comparison",
+        "answer": "**Severity-two support response targets differ by tier:**\n\n- **Business:** one business day [S1]\n- **Enterprise:** four business hours [S1]\n\nSo Enterprise's severity-two target is substantially faster than Business's — roughly a full business day versus half a business day.\n\nFor context on the adjacent severity level: severity-one production incidents target four hours for Business and one hour for Enterprise [S1]. Note that these support response targets are distinct from the disaster-recovery restore targets, which happen to use similar-sounding numbers: Business restore requests are normally started within four hours, and Enterprise restore requests get a one-hour response target [S2].",
+        "route": "research",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 2,
+        "cited_docs": [
+          "support.md",
+          "disaster_recovery.md"
+        ],
+        "tool_calls": 2,
+        "steps": 2,
+        "latency_ms": 4043.13,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "Answer correctly states Business severity-two target as one business day and Enterprise as four business hours, both directly supported by excerpt S1. Additional context on severity-one and disaster-recovery targets is also accurately drawn from S1 and S2, with citations attached to the relevant claims using only supplied labels."
+        }
+      },
+      {
+        "id": "q26",
+        "question": "Can dedicated deployments delay critical security patches?",
+        "type": "single_hop",
+        "answer": "Yes, but only within limits. Dedicated deployments can select a two-week delayed release channel [S1]. However, critical security patches may bypass that delayed channel when AcmeCloud determines immediate remediation is required [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "deployment.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2866.39,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "Answer correctly explains that dedicated deployments can use a delayed channel, but critical security patches may bypass it for immediate remediation, matching the expected facts. All claims are directly supported by and cited to [S1]."
+        }
+      },
+      {
+        "id": "q27",
+        "question": "What is the restore process before data is merged back into production?",
+        "type": "single_hop",
+        "answer": "Restores are initiated through support at the workspace level. The evidence states that **restores create a new recovery workspace before data is merged back into production** [S1]. Business restore requests are normally started within four hours, and Enterprise restore requests receive a one-hour response target [S1].\n\nThe provided evidence does not describe any additional validation, approval, or cutover steps between creating the recovery workspace and merging data back into production.",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "disaster_recovery.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 3664.99,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly states that restores create a new recovery workspace before data is merged back into production, matching the expected fact. All claims are supported by the cited [S1] excerpt, and citations are correctly attached to relevant claims using only the supplied label."
+        }
+      },
+      {
+        "id": "q28",
+        "question": "What is the customer notification target after a confirmed material security incident?",
+        "type": "single_hop",
+        "answer": "For confirmed security incidents that materially affect customer data, AcmeCloud targets customer notification within **24 hours after confirmation** [S1].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 1,
+        "cited_docs": [
+          "security.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 2562.48,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer correctly states the 24-hour customer notification target after confirmation, and the cited excerpt [S1] directly supports this claim with a properly used supplied label."
+        }
+      },
+      {
+        "id": "q29",
+        "question": "Which Enterprise observability and security data can be exported to external systems?",
+        "type": "multi_document",
+        "answer": "Enterprise can export the following observability and security data to external systems:\n\n- **Application logs** — exportable continuously to supported external observability platforms on Enterprise [S1].\n- **Audit events** — exportable to an external SIEM using the audit log streaming integration; Enterprise includes audit log streaming [S2][S6].\n- **Distributed traces** — exportable using OpenTelemetry Protocol; trace export includes request identifiers and service spans but excludes document content by default, and sampling is configurable between 1% and 100% [S3].",
+        "route": "retrieve",
+        "fact_coverage": 1.0,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 4,
+        "cited_docs": [
+          "observability.md",
+          "security.md",
+          "pricing.md",
+          "observability.md"
+        ],
+        "tool_calls": 0,
+        "steps": 0,
+        "latency_ms": 5268.51,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer covers the expected exportable data types (logs, audit, trace), and all claims are supported by the cited excerpts with relevant supplied citation labels."
+        }
+      },
+      {
+        "id": "q30",
+        "question": "Compare the operational commitments that distinguish Enterprise from Business across support, availability, and audit retention.",
+        "type": "multi_document",
+        "answer": "I have sufficient evidence across all three dimensions. Here's the comparison:\n\n## Enterprise vs Business: Operational Commitments\n\n### Support\n| Dimension | Business | Enterprise |\n|---|---|---|\n| Channel | Priority support tickets via console [S2] | Priority tickets **plus** a designated support escalation path [S2] |\n| Sev-1 initial response | 4 hours [S4] | 1 hour [S4] |\n| Sev-2 initial response | 1 business day [S4] | 4 business hours [S4] |\n| Restore requests | Normally started within 4 hours [S5] | 1-hour response target [S5] |\n| Service reviews | Self-service monthly usage reports; no scheduled reviews by default [S17] | May schedule **quarterly operational reviews** (incidents, usage, reliability trends, architecture changes) [S17] |\n\n### Availability\n- **Business**: 99.9% monthly availability target [S1].\n- **Enterprise**: standard 99.95% monthly service-level objective; dedicated Enterprise deployments may negotiate a separate availability objective [S1].\n- **Regional resilience**: Both Business and Enterprise replicate critical metadata across availability zones within the selected region; only Enterprise customers with an approved multi-region addendum can configure warm standby in a second geographic region [S9].\n- **Private networking**: Available to Enterprise (US and EU regions) but **not** on Business or Starter [S10].\n- **Recovery objectives**: Business RPO 4h / RTO 8h; Enterprise RPO 1h / RTO 4h, with possibly more stringent objectives negotiated for dedicated deployments [S7].\n\n### Audit Retention\n- **Business**: 90 days of audit log retention [S13][S14].\n- **Enterprise**: 365 days by default [S13]; includes 365-day audit log retention plus audit log streaming to an external SIEM [S11][S13].\n\n### Additional Enterprise-only operational controls (context)\n- SCIM-based user provisioning [S6][S11].\n- Dedicated single-tenant deployment requiring a minimum one-year commitment, with ~3-week provisioning lead time [S12].\n- Negotiated API quotas (vs. Business's fixed 300 req/min) [S8].\n- Customer-managed encryption keys available in supported regions [S11].\n- Extended operational telemetry: application logs 30 days (vs. 14 for Business) [S15]; service metrics 90 days (vs. 30 for Business) [S16].\n\n**Note on consistency:** Sources agree rather than conflict — the pricing sheet [S11] and security doc [S13] both state 365-day Enterprise audit retention, and the pricing sheet [S14] corroborates the 90-day Business figure.",
+        "route": "research",
+        "fact_coverage": 0.6666666666666666,
+        "citation_present": 1.0,
+        "citation_validity": 1.0,
+        "citation_precision": 1.0,
+        "citation_count": 16,
+        "cited_docs": [
+          "support.md",
+          "support.md",
+          "disaster_recovery.md",
+          "support.md",
+          "observability.md",
+          "disaster_recovery.md",
+          "deployment.md",
+          "disaster_recovery.md",
+          "security.md",
+          "pricing.md",
+          "pricing.md",
+          "security.md",
+          "deployment.md",
+          "api_limits.md",
+          "observability.md",
+          "observability.md"
+        ],
+        "tool_calls": 3,
+        "steps": 2,
+        "latency_ms": 6438.26,
+        "judge": {
+          "correctness": 1.0,
+          "groundedness": 1.0,
+          "citation_quality": 1.0,
+          "reason": "The answer directly compares Enterprise vs Business on support, availability, and audit retention, and includes all expected facts: one-hour response, 99.95% availability, and 365-day audit retention. Claims are supported by the cited excerpts, and citations are relevant and correctly use supplied labels."
+        }
+      }
+    ],
+    "judge_correctness": 1.0,
+    "judge_groundedness": 0.99,
+    "judge_citation_quality": 0.9916666666666667
+  }
+}
